@@ -1,4 +1,4 @@
-# Glossy Skin Patcher for ZZMI
+# Glossy Skin Patcher
 
 Glossy Skin adds adjustable shine to character bodies and faces in Zenless Zone Zero. This Windows patcher connects compatible skins to the separately installed OilSkin engine. Existing files and ZZMI commands use the OilSkin name for compatibility.
 
@@ -10,7 +10,7 @@ On Windows with the .NET Framework C# compiler installed, open PowerShell in the
 .\build.ps1
 ```
 
-The script embeds `controller.ini` and produces `bin\OilSkinPatcher.exe`.
+The script embeds `controller.ini` and produces `bin\Glossy Skin Patcher.exe`.
 
 ## Use
 

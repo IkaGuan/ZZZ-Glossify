@@ -7,7 +7,7 @@ if (!(Test-Path -LiteralPath $compiler)) { throw 'The Windows .NET Framework C# 
 Push-Location $PSScriptRoot
 try {
     New-Item -ItemType Directory -Force bin | Out-Null
-    & $compiler /nologo /target:winexe /r:System.Windows.Forms.dll /r:System.Drawing.dll /r:System.Web.Extensions.dll '/resource:controller.ini,controller' '/out:bin\OilSkinPatcher.exe' OilSkin.cs
+    & $compiler /nologo /target:winexe /r:System.Windows.Forms.dll /r:System.Drawing.dll /r:System.Web.Extensions.dll '/resource:controller.ini,controller' '/out:bin\Glossy Skin Patcher.exe' OilSkin.cs
     if ($LASTEXITCODE -ne 0) { throw 'Build failed.' }
-    Write-Host 'Built bin\OilSkinPatcher.exe'
+    Write-Host 'Built bin\Glossy Skin Patcher.exe'
 } finally { Pop-Location }

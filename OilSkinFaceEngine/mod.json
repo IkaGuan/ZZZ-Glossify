@@ -1,0 +1,14 @@
+{
+  "author": "Glossy Skin Patcher",
+  "version": "1.0",
+  "statusKeeperSync": true,
+  "syncMethod": "namespace",
+  "namespaces": [
+    {
+      "namespace": "OilSkinFaceEngine",
+      "iniFiles": [
+        "OilSkinFaceEngine.ini"
+      ]
+    }
+  ]
+}

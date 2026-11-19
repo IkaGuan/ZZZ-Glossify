@@ -1,29 +1,32 @@
 # Glossy Skin Patcher v1.0
 
-**Glossy Skin Patcher** is a lightweight Windows utility for **Zenless Zone Zero (ZZMI)** that automatically adds adjustable glossy / oily shine to character **bodies** and **faces** across your skin mods.
+**Glossy Skin Base** glosses stock faces and bodies. **Glossy Skin Patcher** is only for a skin mod the base does not cover.
 
-It connects compatible character mods to the shared **OilSkin** matcap & face-sheen engine (`KatFXMatcap` + `OilSkinFaceEngine`), supports separate in-game toggles for Body and Face gloss with customizable keybinds, and backs up modified `.ini` files automatically.
+Use the base mod first. If a character already looks glossy, leave that skin mod alone. Use the patcher when a skin mod replaces the body mesh and the gloss stops on the parts that mod draws. Texture swaps that keep the original body draw still get gloss from the base, and do not need a patch.
 
 ---
 
 ## Requirements
 
 1. **ZZMI (3DMigoto for Zenless Zone Zero)** — via XXMI Launcher or FlairX Mod Manager.
-2. **Shared OilSkin Engine (with Face Engine support)** — installed and enabled in your `ZZMI\Mods` folder (`Matcap_ZZZ.ini` + `Oil\` textures + `OilSkinFaceEngine.ini` + `OilSkinFaceEngine\FaceOil.hlsl`).
-   - *Tip for FlairX Mod Manager users:* Place global engine folders inside `Mods\Bangboo Skins\` so FlairX keeps them enabled when switching character outfits.
+2. **Shared OilSkin Engine** — [GameBanana ZZZ OilSkin](https://gamebanana.com/mods/741702), installed and enabled (`Matcap_ZZZ.ini` + `Oil\` textures).
+3. **Face engine** — `OilSkinFaceEngine.ini` and `OilSkinFaceEngine\FaceOil.hlsl` from this repo, in that same folder. Glossy Skin Base and the patcher call `CommandList\OilSkinFaceEngine\DrawOriginal`.
+   - *Tip for FlairX Mod Manager users:* Place these folders inside `Mods\Bangboo Skins\` so FlairX keeps them enabled when switching character outfits.
+
+The baseline is the engine already enabled as `油光皮肤OilSkin`, not `DISABLED_油光皮肤OilSkin2` and not a fresh unzip of `zzzoilskin_e8613.zip`. Those two author copies have the same body shine shader and the same `CommandList\KatFXMatcap\OilSkin` / `Clear` lists. They do not include the face engine, and both bind **Numpad \*** to the style cycle, including an off step. That key is the patcher's body toggle. The baseline keeps style on **Shift + Numpad \*** and cycles styles 1 through 6, so the oil does not turn off. The author's later package only adds a seventh WetDrop style on top of that same shader.
 
 ---
 
 ## Installation & Quick Start
 
-1. **Ensure the OilSkin Engine is enabled** inside `ZZMI\Mods\` (e.g. `Mods\Bangboo Skins\OilSkin\`).
-2. *(Optional)* **Stock Base Faces:** If you also want face gloss on unpatched/default character outfits, copy the included `GlossySkinBaseFaces` folder into `ZZMI\Mods\` (or `Mods\Bangboo Skins\`).
-3. **Run `Glossy Skin Patcher.exe`** *(can be placed anywhere on your PC)*:
-   - **Mods Folder:** Paste a folder path (and press `Enter`) or click **Choose Folder**. You can select a single skin folder, a character category folder (e.g. `Ellen Joe`), or your entire `ZZMI\Mods` library.
-   - **Backup Path:** Check where backups are saved (`%LOCALAPPDATA%\OilSkinPatcher\Backups` by default), click **Change...** to pick another location, or click **Open Folder** to view backups.
-   - **Gloss Toggles:** Keep the default shortcuts or click either box (`Body Gloss` / `Face Gloss`) and press any key combo to customize them.
-   - **Select & Patch:** Check/uncheck which green **Patch** skins you want to update, then click **Patch**.
-4. **Reload in-game:** Launch Zenless Zone Zero (or press **F10** if already in-game) to load the changes.
+1. **Ensure the OilSkin Engine is enabled** inside `ZZMI\Mods\` (e.g. `Mods\Bangboo Skins\油光皮肤OilSkin\`).
+2. **Install Glossy Skin Base** into `ZZMI\Mods` (or `Mods\Bangboo Skins\`). Face gloss starts on (`Ctrl+Alt+F8`). Body gloss starts off (`Ctrl+Alt+F9`). Press **F10** and check the character.
+3. **Run `Glossy Skin Patcher.exe` only for a mod the base does not gloss** *(the exe can sit anywhere on your PC)*:
+   - **Mods Folder:** Paste that mod's folder, a character folder, or your `ZZMI\Mods` library, then press `Enter`. Or click **Choose Folder**.
+   - **Backup Path:** Backups go to `%LOCALAPPDATA%\OilSkinPatcher\Backups` unless you click **Change...**. **Open Folder** shows them. **Restore Backups** puts the selected mods back.
+   - **Gloss Toggles:** Keep the default shortcuts, or click a box and press a new combo.
+   - **Select & Patch:** Leave checked only the green **Patch** rows that still need gloss, then click **Patch**. Skip a mod that already looks glossy.
+4. **Reload in-game** with **F10**.
 
 > **Note on Windows SmartScreen:** Because this is a standalone unsigned `.exe`, Windows may show a *"Windows protected your PC"* prompt on first launch (`More info` → `Run anyway`). You can also inspect `OilSkin.cs` and compile the `.exe` yourself in seconds using `.\build.ps1`.
 
@@ -40,7 +43,8 @@ Body Gloss and Face Gloss are **completely independent**—you can turn off face
 | **Cycle Gloss Style** | `Shift + Numpad *` | OilSkin Engine (`Matcap_ZZZ.ini`) | Cycles between 6 matcap/wet presets |
 | **Increase Shine Strength** | `Numpad +` | OilSkin Engine (`Matcap_ZZZ.ini`) | Steps shine intensity up (`0.0` → `1.0`) |
 | **Decrease Shine Strength** | `Numpad -` | OilSkin Engine (`Matcap_ZZZ.ini`) | Steps shine intensity down (`1.0` → `0.0`) |
-| **Toggle Stock Base Faces** *(optional)* | `Ctrl + Alt + Numpad *` | `GlossySkinBaseFaces\BaseFaces.ini` | Starts **Off** by default; for unpatched native faces |
+| **Toggle Glossy Skin Base face** | `Ctrl+Alt+F8` | `GlossySkinBase\GlossySkinBase.ini` | Starts **On**. Stock faces. |
+| **Toggle Glossy Skin Base body** | `Ctrl+Alt+F9` | `GlossySkinBase\GlossySkinBase.ini` | Starts **Off**. Stock bodies. |
 
 > **Tip:** Make sure ZZMI hunting mode is turned **off** (press `Numpad 0` if green hunting text is on screen), otherwise `Numpad *` / `+` / `-` are captured by 3DMigoto's shader hunter.
 
@@ -68,14 +72,27 @@ To change your Body or Face toggle keys later (for example, if using a TKL/60% k
 
 ---
 
-## Backups & How to Restore (Unpatch)
+## When to use the patcher
 
-Before modifying any skin, the patcher backs up only the `.ini` file(s) being edited (skipping heavy `.dds`/`.buf` assets) into `<Backup Path>\<ModName>\`, along with a `backup-map.json` reference file. Re-patching a mod preserves your clean original backup `<ModName>` and creates `<ModName> (2)`, `<ModName> (3)`, etc.
+| What you see | What to do |
+|--------------|------------|
+| Stock character, or a skin mod, already has the gloss you want | Leave it. The base mod is doing the work. |
+| A skin mod replaced the body, legs, or outfit, and those parts stayed matte | Patch that one mod. The patcher puts the oil on the draws that mod owns. |
+| You want the mod back to its original files | Use **Restore Backups** and check that mod. |
 
-**To restore a mod to its original unpatched state:**
-1. Click **Open Folder** next to **Backup Path** in the patcher and open `<ModName>` *(choose the base folder without `(2)` for the clean pre-patch original)*.
-2. Copy the `.ini` file(s) inside *(ignore `backup-map.json`)* back into the skin mod's folder, overwriting the patched `.ini` file(s).
-3. Delete `OilSkinSwitch.ini` and `oilskin.json` from the skin mod's root folder, then press **F10** in-game.
+Patching a whole library is no longer the normal way to use this tool.
+
+## Backups & Restore
+
+Before modifying a skin the first time, the patcher backs up only the `.ini` file(s) being edited (skipping heavy `.dds`/`.buf` assets) into `<Backup Path>\<ModName>\`, along with a `backup-map.json` reference file. Each mod keeps that one backup. Patching the same mod again leaves it in place. Copies named `<ModName> (2)` and `<ModName> (3)` from older versions are removed, so the original backup is the one that stays.
+
+**To restore mods:**
+1. Click **Restore Backups** next to **Backup Path**.
+2. Check the mods to put back. **Select All** checks every mod that has a backup. **Clear** unchecks them.
+3. Confirm. The patcher puts each mod's original `.ini` files back, deletes `oilskin.json` and `OilSkinSwitch.ini` from those mod folders, and deletes every backup for those mods, including any `(2)` or `(3)` copy.
+4. Press **F10** in-game.
+
+FlairX renames a mod folder when you enable or disable it (`DISABLED_` on the front). Restore still finds that mod if the folder was renamed after the patch. If both the enabled and disabled copies exist, it restores the one that still has the oil files.
 
 ---
 

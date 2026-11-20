@@ -1,0 +1,22 @@
+; Not loaded. This is the Ellen hair section pattern, with oil on the leg draw only.
+; The live mod was not changed. Hair, belt, and the other draws stay as they are.
+; The first draw is the hair. It has no oil bind. The leg draw is a later range
+; in the same section, so the section name says Hair and Glossify skips all of it.
+;
+; [TextureOverrideEllenHairA]
+; hash = d44a8015
+; match_first_index = 0
+; ib = ResourceEllenHairAIB
+;
+; drawindexed = 25563, 0, 0
+;
+; ; Leg (2063), only while that outfit toggle is on
+; run = CommandList\ExperimentLower\LowerBind
+; drawindexed = 11076, 31623, 0
+; run = CommandList\ExperimentLower\LowerClear
+;
+; A single drawindexed that contains both needs the index range instead:
+; $leg_count = 11076
+; $leg_first = 31623
+; $leg_base = 0
+; run = CommandList\ExperimentLower\LowerRedraw

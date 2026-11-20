@@ -1,0 +1,775 @@
+; Not loaded. Rename to Submesh.ini only while Glossify is disabled.
+; A non-zero first index is one piece of a stock mesh. Index 0 stays on the part switch.
+; Priority -1 beats the part file's -2 for that piece only, and still loses to a skin mod.
+namespace = ExperimentParts
+
+; AstraChandelier Body first index 66327
+[TextureOverrideExpSub_02d8a2cb_66327]
+hash = 02d8a2cb
+match_first_index = 66327
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; VelinaLeisure Body first index 76431
+[TextureOverrideExpSub_0479bb8f_76431]
+hash = 0479bb8f
+match_first_index = 76431
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; VelinaLeisure Body first index 86547
+[TextureOverrideExpSub_0479bb8f_86547]
+hash = 0479bb8f
+match_first_index = 86547
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Evelyn Body first index 50418
+[TextureOverrideExpSub_04b53ecd_50418]
+hash = 04b53ecd
+match_first_index = 50418
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Velina Body first index 55575
+[TextureOverrideExpSub_1300e048_55575]
+hash = 1300e048
+match_first_index = 55575
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; WiseSummer Body first index 51270
+[TextureOverrideExpSub_19a3f02e_51270]
+hash = 19a3f02e
+match_first_index = 51270
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; RemielleMoonlight Legs first index 15546
+[TextureOverrideExpSub_24a512cb_15546]
+hash = 24a512cb
+match_first_index = 15546
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $lower == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Remielle Body first index 59094
+[TextureOverrideExpSub_28e05a59_59094]
+hash = 28e05a59
+match_first_index = 59094
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; RemielleSummer Body first index 56736
+[TextureOverrideExpSub_2cd6516a_56736]
+hash = 2cd6516a
+match_first_index = 56736
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; VivianSummer Body first index 45882
+[TextureOverrideExpSub_3060793b_45882]
+hash = 3060793b
+match_first_index = 45882
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; VivianSummer Body first index 46122
+[TextureOverrideExpSub_3060793b_46122]
+hash = 3060793b
+match_first_index = 46122
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; VivianSummer Body first index 46752
+[TextureOverrideExpSub_3060793b_46752]
+hash = 3060793b
+match_first_index = 46752
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; LucySummer Body first index 64878
+[TextureOverrideExpSub_30abbad1_64878]
+hash = 30abbad1
+match_first_index = 64878
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Billy Body first index 55206
+[TextureOverrideExpSub_3371580a_55206]
+hash = 3371580a
+match_first_index = 55206
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Sigrid Body first index 42963
+[TextureOverrideExpSub_38daef11_42963]
+hash = 38daef11
+match_first_index = 42963
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; NangongYu Body first index 55836
+[TextureOverrideExpSub_4586e530_55836]
+hash = 4586e530
+match_first_index = 55836
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Anby Body first index 56634
+[TextureOverrideExpSub_4816de84_56634]
+hash = 4816de84
+match_first_index = 56634
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Yuzuha Body first index 17364
+[TextureOverrideExpSub_5144c409_17364]
+hash = 5144c409
+match_first_index = 17364
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; NangongYuRapsody Body first index 77310
+[TextureOverrideExpSub_5f2741ff_77310]
+hash = 5f2741ff
+match_first_index = 77310
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Banyue Legs first index 10950
+[TextureOverrideExpSub_5f855404_10950]
+hash = 5f855404
+match_first_index = 10950
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $lower == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; BelleSummer Body first index 45060
+[TextureOverrideExpSub_619c5c94_45060]
+hash = 619c5c94
+match_first_index = 45060
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; BelleSummer Body first index 45324
+[TextureOverrideExpSub_619c5c94_45324]
+hash = 619c5c94
+match_first_index = 45324
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; BelleSummer Body first index 46932
+[TextureOverrideExpSub_619c5c94_46932]
+hash = 619c5c94
+match_first_index = 46932
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Banyue Body first index 39831
+[TextureOverrideExpSub_698046e6_39831]
+hash = 698046e6
+match_first_index = 39831
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Banyue Body first index 39945
+[TextureOverrideExpSub_698046e6_39945]
+hash = 698046e6
+match_first_index = 39945
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Banyue Body first index 39987
+[TextureOverrideExpSub_698046e6_39987]
+hash = 698046e6
+match_first_index = 39987
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Norma Body first index 55002
+[TextureOverrideExpSub_773f390c_55002]
+hash = 773f390c
+match_first_index = 55002
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Norma Body first index 57966
+[TextureOverrideExpSub_773f390c_57966]
+hash = 773f390c
+match_first_index = 57966
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; SunnaKfc Body first index 22902
+[TextureOverrideExpSub_7efbdabd_22902]
+hash = 7efbdabd
+match_first_index = 22902
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Grace Body first index 42927
+[TextureOverrideExpSub_8b240678_42927]
+hash = 8b240678
+match_first_index = 42927
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Aria Torso first index 44208
+[TextureOverrideExpSub_8c5b553a_44208]
+hash = 8c5b553a
+match_first_index = 44208
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; RemielleMoonlight Body first index 64626
+[TextureOverrideExpSub_92cb56c9_64626]
+hash = 92cb56c9
+match_first_index = 64626
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; YixuanTrailsOfInk Body first index 48399
+[TextureOverrideExpSub_95de0d39_48399]
+hash = 95de0d39
+match_first_index = 48399
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; YixuanTrailsOfInk Body first index 63420
+[TextureOverrideExpSub_95de0d39_63420]
+hash = 95de0d39
+match_first_index = 63420
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Claret Legs first index 26946
+[TextureOverrideExpSub_98ece166_26946]
+hash = 98ece166
+match_first_index = 26946
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $lower == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; RemielleSummer Legs first index 42927
+[TextureOverrideExpSub_b1870eee_42927]
+hash = b1870eee
+match_first_index = 42927
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $lower == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; YuzuhaSummer Body first index 43176
+[TextureOverrideExpSub_b298482d_43176]
+hash = b298482d
+match_first_index = 43176
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; PanYinhuJewel Body first index 28002
+[TextureOverrideExpSub_b518e540_28002]
+hash = b518e540
+match_first_index = 28002
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; PanYinhuJewel Body first index 34542
+[TextureOverrideExpSub_b518e540_34542]
+hash = b518e540
+match_first_index = 34542
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; PanYinhuJewel Body first index 63093
+[TextureOverrideExpSub_b518e540_63093]
+hash = b518e540
+match_first_index = 63093
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Pulchra Body first index 39972
+[TextureOverrideExpSub_bd385763_39972]
+hash = bd385763
+match_first_index = 39972
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Belle Body first index 31275
+[TextureOverrideExpSub_c2b4ce3a_31275]
+hash = c2b4ce3a
+match_first_index = 31275
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; AriaDiscordant Torso first index 59211
+[TextureOverrideExpSub_c6bb960b_59211]
+hash = c6bb960b
+match_first_index = 59211
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; PanYinhu Body first index 21066
+[TextureOverrideExpSub_cb1a6db9_21066]
+hash = cb1a6db9
+match_first_index = 21066
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; PanYinhu Body first index 21354
+[TextureOverrideExpSub_cb1a6db9_21354]
+hash = cb1a6db9
+match_first_index = 21354
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; PanYinhu Body first index 61644
+[TextureOverrideExpSub_cb1a6db9_61644]
+hash = cb1a6db9
+match_first_index = 61644
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Lucia Body first index 61632
+[TextureOverrideExpSub_d39c304d_61632]
+hash = d39c304d
+match_first_index = 61632
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Claret Body first index 39828
+[TextureOverrideExpSub_d942b3a7_39828]
+hash = d942b3a7
+match_first_index = 39828
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; SigridSummer Body first index 67443
+[TextureOverrideExpSub_d9e49957_67443]
+hash = d9e49957
+match_first_index = 67443
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Soldier11 Body first index 46062
+[TextureOverrideExpSub_e3ee72d9_46062]
+hash = e3ee72d9
+match_first_index = 46062
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Soldier11 Body first index 55185
+[TextureOverrideExpSub_e3ee72d9_55185]
+hash = e3ee72d9
+match_first_index = 55185
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Nicole Body first index 46683
+[TextureOverrideExpSub_e53364dd_46683]
+hash = e53364dd
+match_first_index = 46683
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; NangongYuKfc Body first index 22524
+[TextureOverrideExpSub_fb76d934_22524]
+hash = fb76d934
+match_first_index = 22524
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Cissia Body first index 43281
+[TextureOverrideExpSub_ff2ec4d6_43281]
+hash = ff2ec4d6
+match_first_index = 43281
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+
+; Cissia Body first index 52734
+[TextureOverrideExpSub_ff2ec4d6_52734]
+hash = ff2ec4d6
+match_first_index = 52734
+match_priority = -1
+if @o0 && @o3 && @oD
+    if $upper == 1
+        run = CommandListExpBind
+    endif
+endif
+if @o0 && @o3 && @oD
+    post run = CommandListExpClear
+endif
+

@@ -1,0 +1,12 @@
+{
+  "author": "Glossify experiment",
+  "version": "0",
+  "statusKeeperSync": true,
+  "syncMethod": "namespace",
+  "namespaces": [
+    { "namespace": "ExperimentPanel", "iniFiles": ["Panel.ini"] },
+    { "namespace": "ExperimentParts", "iniFiles": ["PartToggles.ini"] },
+    { "namespace": "ExperimentGroups", "iniFiles": ["GroupSplit.ini"] },
+    { "namespace": "ExperimentLower", "iniFiles": ["LowerDraw.ini"] }
+  ]
+}

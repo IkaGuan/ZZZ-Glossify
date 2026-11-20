@@ -1,0 +1,91 @@
+scanned_ini=6877
+agent_hashes=382
+stock_upper=92 stock_lower=27 stock_arms=4
+lower_draws_inside_hair_sections=6
+other_skin_draws_inside_hair_sections=4
+part_hash_sections_the_patcher_skips=2131
+body_sections_that_also_comment_hair=400
+enabled_lower_draws_inside_hair=6
+enabled_part_sections_with_draws_the_patcher_skips=1
+enabled_body_sections_that_also_comment_hair=0
+
+== enabled part sections with draws the patcher skips (first 25) ==
+lower	Ye Shunguang\Ye Shunguang Crimson Moon & White Plume base ver 3.4\Ye Shunguang Crimson Moon & White Plume base ver 3.4\Ye Shunguang.ini	TextureOverride_IB_4a178546_1_Component1	hash=4a178546	draws=6
+
+== lower draws inside a hair section (first 40) ==
+enabled	Ellen Joe\Ellen - Bottom Heavy\Ellen-BottomHeavy(NSFW)\EllenBH.ini	TextureOverrideEllenHairA	99	Leg (2063)	drawindexed = 11076, 31623, 0
+enabled	Ellen Joe\Ellen - Bottom Heavy\Ellen-BottomHeavy(NSFW)\EllenBH.ini	TextureOverrideEllenHairA	101	Leg (2063)	drawindexed = 11076, 31623, 0
+enabled	Ellen Joe\Ellen - Bottom Heavy\Ellen-BottomHeavy(NSFW)\EllenBH.ini	TextureOverrideEllenHairA	103	Leg (2063)	drawindexed = 11076, 31623, 0
+enabled	Ellen Joe\Ellen - Bottom Heavy\Ellen-BottomHeavy(NSFW)\EllenBH.ini	TextureOverrideEllenHairA	111	LowerHalf (4147)	drawindexed = 22512, 42699, 0
+enabled	Ellen Joe\Ellen - Bottom Heavy\Ellen-BottomHeavy(NSFW)\EllenBH.ini	TextureOverrideEllenHairA	113	LowerHalf (4147)	drawindexed = 22512, 42699, 0
+enabled	Ellen Joe\Ellen - Bottom Heavy\Ellen-BottomHeavy(NSFW)\EllenBH.ini	TextureOverrideEllenHairA	115	LowerHalf (4147)	drawindexed = 22512, 42699, 0
+
+== other skin draws inside a hair section (first 20) ==
+disabled	Belle\DISABLED_Belle +Skins - H Redux (Bottom Heavy Vanilla)\Belle-HazekerRedux(NSFW)\Hair&Face\BelleHRHair.ini	TextureOverrideBelleBase2HairBlend	46	Basically HATHair but during the usage of the base skin	Draw = 4733, 0
+disabled	Belle\DISABLED_Belle Delicate Sunlight - Hazeker Redux (NSFW)\Belle-HazekerRedux(NSFW)\Hair&Face\BelleHRHair.ini	TextureOverrideBelleBase2HairBlend	46	Basically HATHair but during the usage of the base skin	Draw = 4733, 0
+disabled	Belle\DISABLED_Belle School - Hazeker Redux (NSFW)\Belle-HazekerRedux(NSFW)\Hair&Face\BelleHRHair.ini	TextureOverrideBelleBase2HairBlend	46	Basically HATHair but during the usage of the base skin	Draw = 4733, 0
+disabled	Belle\DISABLED_Belle-HazekerRedux(NSFW)\Hair\BelleHRHair.ini	TextureOverrideBelleBase2HairBlend	46	Basically HATHair but during the usage of the base skin	Draw = 4733, 0
+
+== known part hash, section name is not a body (first 40) ==
+disabled	lower	Alice Thymefield\DISABLED_Alice - THICC (Mingchen)\Alice.ini	TextureOverrideAliceLegIB	hash=625c2692
+disabled	lower	Alice Thymefield\DISABLED_Alice - THICC (Mingchen)\Alice.ini	TextureOverrideAliceLegA	hash=625c2692
+disabled	lower	Alice Thymefield\DISABLED_Alice School Uniform JK\0Alice.ini	TextureOverride0Alice11IB	hash=625c2692
+disabled	lower	Alice Thymefield\DISABLED_Alice School Uniform JK\0Alice.ini	TextureOverride0Alice11A	hash=625c2692
+disabled	upper	Alice Thymefield\DISABLED_Alice School Uniform JK\1.ini	TextureOverride.Active.Mark	hash=8a512b21
+disabled	upper	Anby Demara\DISABLED_Anby -yyzj-\body\Anby.ini	TextureOverrideCheckHash	hash=4816de84
+disabled	upper	Aria\DISABLED_Aria - THICC (Hazeker)\Construct\AriaRobotBH.ini	TextureOverridePyrois.Body.IB	hash=d347d859
+disabled	upper	Aria\DISABLED_AriaOG_SimpleToggle\Aria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_SimpleToggle\Aria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_SimpleToggle\Aria.ini	TextureOverrideAriaDressB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\Animation.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\Animation.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\01\DISABLEDAria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\01\DISABLEDAria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\02\DISABLEDAria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\02\DISABLEDAria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\03\DISABLEDAria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\03\DISABLEDAria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\04\DISABLEDAria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\04\DISABLEDAria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\05\DISABLEDAria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\05\DISABLEDAria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\06\DISABLEDAria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\06\DISABLEDAria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\07\DISABLEDAria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\07\DISABLEDAria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\08\DISABLEDAria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\08\DISABLEDAria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\09\DISABLEDAria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\09\DISABLEDAria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\10\DISABLEDAria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\10\DISABLEDAria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\11\DISABLEDAria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\11\DISABLEDAria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\12\DISABLEDAria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\12\DISABLEDAria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\13\DISABLEDAria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\13\DISABLEDAria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\14\DISABLEDAria.ini	TextureOverrideAriaDressIB	hash=8c5b553a
+disabled	upper	Aria\DISABLED_AriaOG_Toggled_LiftX_Anim\14\DISABLEDAria.ini	TextureOverrideAriaDressA	hash=8c5b553a
+
+== body section whose comments include both hair and skin (first 20) ==
+disabled	Belle\DISABLED_Exce - BelleSummer\BelleSummerSkin.ini	TextureOverrideBelleSummerSkinBodyA	hash=43ed3c22
+disabled	Dialyn\DISABLED_Dialyn-Sheer Cut-back sweater!\Dialyn-Sweater.ini	TextureOverride_af39a873_Component1	hash=af39a873
+disabled	Remielle Dan\DISABLED_蕾米x小孩 9.16修复\Animation.ini	TextureOverrideleimidressA	hash=28e05a59
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\Animation_slotsfix.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_001\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_002\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_003\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_004\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_005\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_006\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_007\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_008\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_009\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_010\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_011\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_012\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_013\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_014\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_015\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a
+disabled	Remielle Dan\DISABLED_蕾米泳装  哲x蕾米 有小孩\lmyzyounanhai_016\DISABLEDlmyz.ini	TextureOverridelmyzbodyA	hash=2cd6516a

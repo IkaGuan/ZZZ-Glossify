@@ -1,0 +1,17 @@
+Summary
+Abort this branch. Do not merge it. Glossify stays the mod.
+
+This branch tried to oil NPCs, enemies, bangboo, and single body parts from outside the mesh the game draws. One mod folder, opened with Ctrl+Alt+F6. Glossify and the installed skins were not edited.
+
+Description
+The game does not draw "upper body", "lower body", and "arms" as separate meshes for most agents. The catalogue name Body is the whole body, so the Upper switch lit the whole stock body. Soldier 0 and Caesar have a separate legs buffer, so Upper left their legs matte. Lower only matches those separate legs buffers. Belle was the stock character it actually lit. Arms matches four meshes in the whole list: Pyrois, Jane, Banyue, and Billy.
+
+A skin mod wins the draw. An outside switch cannot pick a part inside it. Hair lit on most equipped mods because those mods draw hair in the body pass. Nicole's mod keeps hair separate, so her hair stayed matte. NPC, Enemy, and Bangboo used placeholder shader hashes and matched nothing. Gloss on an NPC while a mod was equipped was a shared body buffer, or oil left bound for the next draw.
+
+In-game result, with this mod disabled afterward:
+- Glossify crashes most often on an agent swap, with a black face and body.
+- Soldier 0 or Caesar, Glossify only, stock face and body on: hair matte, upper body gloss, lower body matte, face gloss.
+- A current modded agent, Glossify only: the same four results.
+
+What is worth keeping
+NPCs, enemies, and bangboo can only be oiled by hunting the pixel shader and skipping agent index buffers. That still cannot split a story NPC who reuses an agent mesh. Per-part oil on a modded skin has to be marked on that skin's own draw. The leg gap on Soldier 0, Caesar, and the same kind of mod belongs in Glossify: oil the leg draw and leave the hair draw matte.

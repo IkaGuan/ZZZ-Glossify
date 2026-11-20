@@ -1,0 +1,22 @@
+; Not loaded. One face index, not the whole face.
+; Glossify matches the face hash with no first index, at priority 19500.
+; This section is 19501 and names one index, so only that draw is affected.
+; When the switch is off it calls the same list Glossify already uses.
+; Rina's face hash 9f90cfaa has draws at index 0 and index 8616.
+;
+; [TextureOverrideExpFace_9f90cfaa_8616]
+; hash = 9f90cfaa
+; match_first_index = 8616
+; match_priority = 19501
+; if @o0 && @o3 && @oD
+;     if $face_part == 1
+;         run = CommandList\GlossifyFaceEngine\DrawOriginal
+;     else
+;         run = CommandList\GlossifyBase\BaseFace
+;     endif
+; endif
+;
+; A modded face that already splits drawindexed works the same way as the legs:
+; bind oil around one of those lines, then clear ps-t125 before the next line.
+; A modded face that is one drawindexed cannot be split from outside.
+; Use LowerRedraw with that piece's index count and first index.

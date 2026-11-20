@@ -12,7 +12,7 @@ Install these before Glossify.
 
 1. **ZZMI** for Zenless Zone Zero. XXMI Launcher and FlairX Mod Manager both provide it. Use the one you already play with.
 2. **油光皮肤 OilSkin**, the shared oil engine: [GameBanana 741702](https://gamebanana.com/mods/741702). Use the folder that contains `Matcap_ZZZ.ini` and the `Oil` textures. Glossify does not ship those files.
-3. Use the engine whose style key is **Shift + Numpad \***, cycling styles 1 through 6. Leave any second copy of that engine out of the mods folder. The author's later package binds plain **Numpad \*** to style, and that key is also Glossify's patched-skin body toggle.
+3. Use the engine whose style key is **Shift + Numpad \***, cycling styles 1 through 6. Leave any second copy of that engine out of the mods folder. Later package [GameBanana 741702](https://gamebanana.com/mods/741702) binds plain **Numpad \*** to style, and that key is also Glossify's patched-skin body toggle. You can change the keybind
 
 ## Installation
 

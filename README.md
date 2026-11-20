@@ -1,134 +1,130 @@
-# Glossy Skin Patcher v1.0
+# Glossify
 
-**Glossy Skin Base** glosses stock faces and bodies. **Glossy Skin Patcher** is only for a skin mod the base does not cover.
+Gloss for stock faces and bodies in Zenless Zone Zero, plus a patcher for skin mods that replace the mesh.
 
-Use the base mod first. If a character already looks glossy, leave that skin mod alone. Use the patcher when a skin mod replaces the body mesh and the gloss stops on the parts that mod draws. Texture swaps that keep the original body draw still get gloss from the base, and do not need a patch.
+中文说明：[README.zh-CN.md](README.zh-CN.md)
 
----
+Glossify does not include the oil shader or its textures. Those stay in the author's oil mod.
 
-## Requirements
+## Dependencies
 
-1. **ZZMI (3DMigoto for Zenless Zone Zero)** — via XXMI Launcher or FlairX Mod Manager.
-2. **Shared OilSkin Engine** — [GameBanana ZZZ OilSkin](https://gamebanana.com/mods/741702), installed and enabled (`Matcap_ZZZ.ini` + `Oil\` textures).
-3. **Face engine** — `OilSkinFaceEngine.ini` and `OilSkinFaceEngine\FaceOil.hlsl` from this repo, in that same folder. Glossy Skin Base and the patcher call `CommandList\OilSkinFaceEngine\DrawOriginal`.
-   - *Tip for FlairX Mod Manager users:* Place these folders inside `Mods\Bangboo Skins\` so FlairX keeps them enabled when switching character outfits.
+Install and enable these before Glossify. Order matters.
 
-The baseline is the engine already enabled as `油光皮肤OilSkin`, not `DISABLED_油光皮肤OilSkin2` and not a fresh unzip of `zzzoilskin_e8613.zip`. Those two author copies have the same body shine shader and the same `CommandList\KatFXMatcap\OilSkin` / `Clear` lists. They do not include the face engine, and both bind **Numpad \*** to the style cycle, including an off step. That key is the patcher's body toggle. The baseline keeps style on **Shift + Numpad \*** and cycles styles 1 through 6, so the oil does not turn off. The author's later package only adds a seventh WetDrop style on top of that same shader.
+1. **ZZMI** for Zenless Zone Zero, through XXMI Launcher or FlairX Mod Manager.
+2. **油光皮肤 OilSkin**, the shared oil engine: [GameBanana 741702](https://gamebanana.com/mods/741702). Enable the folder that contains `Matcap_ZZZ.ini` and the `Oil` textures. Glossify does not ship those files.
+3. Use the engine whose style key is **Shift + Numpad \***, cycling styles 1 through 6. Do not enable a second copy of that engine. The author's later package binds plain **Numpad \*** to style, and that key is also Glossify's patched-mod body toggle.
 
----
+## Installation
 
-## Installation & Quick Start
+Enable two folders. Leave both enabled. Press **F10** in game.
 
-1. **Ensure the OilSkin Engine is enabled** inside `ZZMI\Mods\` (e.g. `Mods\Bangboo Skins\油光皮肤OilSkin\`).
-2. **Install Glossy Skin Base** into `ZZMI\Mods` (or `Mods\Bangboo Skins\`). Face gloss starts on (`Ctrl+Alt+F8`). Body gloss starts off (`Ctrl+Alt+F9`). Press **F10** and check the character.
-3. **Run `Glossy Skin Patcher.exe` only for a mod the base does not gloss** *(the exe can sit anywhere on your PC)*:
-   - **Mods Folder:** Paste that mod's folder, a character folder, or your `ZZMI\Mods` library, then press `Enter`. Or click **Choose Folder**.
-   - **Backup Path:** Backups go to `%LOCALAPPDATA%\OilSkinPatcher\Backups` unless you click **Change...**. **Open Folder** shows them. **Restore Backups** puts the selected mods back.
-   - **Gloss Toggles:** Keep the default shortcuts, or click a box and press a new combo.
-   - **Select & Patch:** Leave checked only the green **Patch** rows that still need gloss, then click **Patch**. Skip a mod that already looks glossy.
-4. **Reload in-game** with **F10**.
+| Folder | Where it comes from | What it does |
+| --- | --- | --- |
+| `Glossify` | This download. Put it in `ZZMI\Mods`, or in `Mods\Bangboo Skins` if you use FlairX. | Stock faces and bodies, the face engine, the panel, and the keys for patched skins. One folder. |
+| `油光皮肤 OilSkin` | [GameBanana 741702](https://gamebanana.com/mods/741702) | The oil shader and textures. Not included here. |
 
-> **Note on Windows SmartScreen:** Because this is a standalone unsigned `.exe`, Windows may show a *"Windows protected your PC"* prompt on first launch (`More info` → `Run anyway`). You can also inspect `OilSkin.cs` and compile the `.exe` yourself in seconds using `.\build.ps1`.
+Do not copy Glossify into the oil folder. The next oil update would delete it.
 
----
+`Glossify` contains `GlossifyBase.ini`, `FaceFallback.hlsl`, `GlossifyFaceEngine.ini`, `GlossifyFaceEngine\FaceOil.hlsl`, `GlossifyToggles.ini`, `GlossifyToggles.hlsl`, `Font.dds`, `GlossifySkinToggles.ini`, and `mod.json`.
 
-## Controls & Keybinds
+`Glossify Patcher.exe` is only for a skin mod the stock hooks do not cover. It can sit anywhere on the PC. It does not go inside `Mods`.
 
-Body Gloss and Face Gloss are **completely independent**—you can turn off face gloss while keeping body gloss on, or turn off body gloss while keeping face gloss on.
+After F10, look at a stock character. Face gloss should already be on. Body gloss is off until you press **Ctrl+Alt+F9**.
 
-| Action | Default Shortcut | Where Configured | Notes |
-|--------|------------------|------------------|-------|
-| **Toggle Body Gloss** | `Numpad *` | Patcher UI (**Body Gloss**) | Cycles body gloss On / Off (`$\OilSkinToggles\body_enabled`) |
-| **Toggle Face Gloss** | `Alt + Numpad *` | Patcher UI (**Face Gloss**) | Cycles face gloss On / Off (`$\OilSkinToggles\face_enabled`) |
-| **Cycle Gloss Style** | `Shift + Numpad *` | OilSkin Engine (`Matcap_ZZZ.ini`) | Cycles between 6 matcap/wet presets |
-| **Increase Shine Strength** | `Numpad +` | OilSkin Engine (`Matcap_ZZZ.ini`) | Steps shine intensity up (`0.0` → `1.0`) |
-| **Decrease Shine Strength** | `Numpad -` | OilSkin Engine (`Matcap_ZZZ.ini`) | Steps shine intensity down (`1.0` → `0.0`) |
-| **Toggle Glossy Skin Base face** | `Ctrl+Alt+F8` | `GlossySkinBase\GlossySkinBase.ini` | Starts **On**. Stock faces. |
-| **Toggle Glossy Skin Base body** | `Ctrl+Alt+F9` | `GlossySkinBase\GlossySkinBase.ini` | Starts **Off**. Stock bodies. |
+Shader files named `.bin` next to an `.hlsl` are a cache the game writes. They are not part of the download.
 
-> **Tip:** Make sure ZZMI hunting mode is turned **off** (press `Numpad 0` if green hunting text is on screen), otherwise `Numpad *` / `+` / `-` are captured by 3DMigoto's shader hunter.
+## Keys
 
-### Changing Keybinds Later (No Re-Patching Needed)
-Individual skin mods do **not** have hotkeys injected into them (keeping FlairX Mod Manager hotkey cards clean). Instead, all patched skins read from a single shared `GlossySkinToggles.ini` file automatically installed into your `ZZMI\Mods` folder (`Mods\Bangboo Skins\GlossySkinToggles\` if `Bangboo Skins` exists, or `Mods\GlossySkinToggles\`).
+Turn hunting mode off first. If green hunting text is on screen, press **Numpad 0**. Hunting captures Numpad \*, +, and −.
 
-To change your Body or Face toggle keys later (for example, if using a TKL/60% keyboard without a Numpad):
-1. Open `Glossy Skin Patcher.exe`.
-2. Click the **Body Gloss** or **Face Gloss** box and press your desired key combination (`Esc` cancels; **Reset** restores defaults).
-3. Click **Apply Keybinds**, then press **F10** in-game. Every already-patched skin immediately uses the new shortcuts.
+| Action | Key | Starts |
+| --- | --- | --- |
+| Show or hide the panel | Ctrl+Alt+F7 | Hidden. Drag the panel anywhere. Click X, or press the same key, to close it. |
+| Stock face | Ctrl+Alt+F8 | On |
+| Stock body | Ctrl+Alt+F9 | Off |
+| Patched mod face | Alt+Numpad \* | On |
+| Patched mod body | Numpad \* | On |
+| Oil style | Shift+Numpad \* | Style 1 through 6, on the oil engine |
+| Stronger | Numpad + | The panel shows 0, 2, 4, 6, 8, 10 |
+| Weaker | Numpad − | The panel shows 10 down to 0, one step at a time |
 
----
+The panel's strength number is the engine's 0.0–1.0 shine, shown as 0 through 10. Numpad + uses the engine's 0.2 steps, so it skips the odd numbers.
 
-## Status Labels Explained
+The choice for each toggle is saved. If a key seems to do nothing the first time, press F10 once and try the key again.
 
-| Colour | Status | What It Means & What To Do |
-|--------|--------|----------------------------|
-| Green | **Patch - Body + Face / Body / Face** | Ready to patch (or ready to upgrade from an older patcher version). Checked by default. |
-| Grey | **Up to Date** | Already patched with the current controller; no changes needed. |
-| Grey | **Skipped - Built-in Matcap** | **Already has custom matcap/oil shaders built in by the skin author** (common on custom Latex, Metal, or KatFXMatcap skins that bind their own `ps-t125` matcaps and have their own oil hotkey). **Do not force-patch**—leave it as-is and use the mod author's own built-in toggle keys so its custom materials aren't overwritten. |
-| Grey | **Skipped - No Draws** | No compatible character body/face `drawindexed` calls found (e.g. weapon-only, hair-only, UI, or empty folders). |
-| Orange | **Manual Integration** | Contains a custom `OilSkinSwitch.ini` written outside this tool. Left untouched for safety. |
-| Orange | **Needs Review** | Unexpected file state or partially edited hooks—check the message shown after the dash. |
-| Red | **Broken (FlairX)** | Marked as broken in FlairX Mod Manager (`mod.json` or `ZZ-BrokenMods.json`) and skipped automatically. |
+To change the patched-mod keys, open Glossify Patcher, click **Body Gloss** or **Face Gloss**, press the new combo, then click **Apply Keybinds** and press F10. Already patched skins pick up the new keys. Esc cancels a key. **Reset** restores Numpad \* and Alt+Numpad \*.
 
----
+## When a skin mod stays matte
 
-## When to use the patcher
+Use the base first. If the character is already glossy, leave that skin mod alone. Texture swaps that keep the original body draw get gloss from the base.
+
+Use the patcher only when a mod replaces the body, legs, or outfit and those parts stay matte. Patch that one mod. Do not patch the whole library.
+
+The patcher hooks a face section that draws with a number, with `drawindexed = auto`, or with `draw =`. It also hooks a face section that only swaps the face texture and never draws, including sections named `脸`. A section named Head is hooked only when that mesh is the character's face. Hair pieces, earrings, and blend-shape passes stay skipped. A mod patched before this face fix keeps the old result until you restore that mod and patch it again.
+
+## Only the agents you patch
+
+Patch each skin mod on its own if you want that agent glossy and NPCs matte. Stock face and stock body follow the original meshes, so they also gloss some shop NPCs. An unpatched mod that still uses a stock face or body glosses every NPC who draws that mesh. Leave the `Glossify` folder enabled and turn the stock toggles off:
+
+1. Press **Ctrl+Alt+F8** until the stock face is off.
+2. Press **Ctrl+Alt+F9** until the stock body is off.
+3. Patch only the agent skins that should shine. **Numpad \*** is the patched body. **Alt+Numpad \*** is the patched face. **Ctrl+Alt+F9** also glosses that patched mod's body while it is on screen. **SAVE LOOK** on the panel stores the current style and strength on that mod. After that, the oil keys change the stock look only. Press **SAVE LOOK** again to copy the stock look onto the mod.
+
+Do not disable the `Glossify` folder to hide NPC gloss. That also turns off the face engine and the patched-mod keys, and patched faces go matte.
+
+A patched mesh still shines on anyone who draws that mesh. With stock face off, the patched face key glosses the face while a patched mod is on screen, including a stock face that mod still uses. Hair stays matte on purpose. The panel says PATCHED while that mod is drawing, and STOCK on any other model. The patched body and face rows show up only for PATCHED.
+
+1. Run `Glossify Patcher.exe`. Windows SmartScreen may say "Windows protected your PC" the first time, because the exe is unsigned. **More info**, then **Run anyway**. You can also compile it yourself with `.\build.ps1`.
+2. **Mods Folder:** paste a mod folder, a character folder, or the `ZZMI\Mods` library, then Enter. Or click **Choose Folder**.
+3. Leave checked only the green **Patch** rows that still need gloss. Click **Patch**.
+4. Press F10.
 
 | What you see | What to do |
-|--------------|------------|
-| Stock character, or a skin mod, already has the gloss you want | Leave it. The base mod is doing the work. |
-| A skin mod replaced the body, legs, or outfit, and those parts stayed matte | Patch that one mod. The patcher puts the oil on the draws that mod owns. |
-| You want the mod back to its original files | Use **Restore Backups** and check that mod. |
+| --- | --- |
+| Stock character, or a skin, already glossy | Leave it. |
+| A replaced body, legs, or outfit stayed matte | Patch that mod. |
+| NPCs turned glossy | Turn stock face and stock body off, and patch only the mods that should shine. |
+| You want the original files back | **Restore Backups**, check that mod, confirm, then F10. |
 
-Patching a whole library is no longer the normal way to use this tool.
+Backups are the edited `.ini` files only. They go to `%LOCALAPPDATA%\OilSkinPatcher\Backups` unless you click **Change...**. Each mod keeps one backup. **Open Folder** shows them. Restore puts the original ini files back, removes `oilskin.json` and `OilSkinSwitch.ini` from that mod, and deletes the backup. FlairX adds `DISABLED_` to a folder name when you disable a mod. Restore still finds the mod after that rename.
 
-## Backups & Restore
+| Colour | Status | What to do |
+| --- | --- | --- |
+| Green | Patch | Ready. Checked by default. |
+| Grey | Up to Date | Already patched with this version. |
+| Grey | Skipped - Built-in Matcap | The skin author already has an oil shader. Leave it on their keys. |
+| Grey | Skipped - No Draws | Nothing to gloss, such as a weapon-only or hair-only folder. |
+| Orange | Manual Integration | Has an `OilSkinSwitch.ini` this tool did not write. Left alone. |
+| Orange | Needs Review | Read the note after the dash. |
+| Red | Broken (FlairX) | Marked broken in FlairX. Skipped. |
 
-Before modifying a skin the first time, the patcher backs up only the `.ini` file(s) being edited (skipping heavy `.dds`/`.buf` assets) into `<Backup Path>\<ModName>\`, along with a `backup-map.json` reference file. Each mod keeps that one backup. Patching the same mod again leaves it in place. Copies named `<ModName> (2)` and `<ModName> (3)` from older versions are removed, so the original backup is the one that stays.
+## Limits
 
-**To restore mods:**
-1. Click **Restore Backups** next to **Backup Path**.
-2. Check the mods to put back. **Select All** checks every mod that has a backup. **Clear** unchecks them.
-3. Confirm. The patcher puts each mod's original `.ini` files back, deletes `oilskin.json` and `OilSkinSwitch.ini` from those mod folders, and deletes every backup for those mods, including any `(2)` or `(3)` copy.
-4. Press **F10** in-game.
+Hashes are exact. A game update that changes a mesh turns that character's gloss off until the list is refreshed.
 
-FlairX renames a mod folder when you enable or disable it (`DISABLED_` on the front). Restore still finds that mod if the folder was renamed after the patch. If both the enabled and disabled copies exist, it restores the one that still has the oil files.
+**Seth.** No face gloss and no body gloss.
 
----
+**Roxy.** Face gloss works. Body gloss does not. Her body hash `d5e1e7ff` is not in this mod.
 
-## Supported Mod Layouts
+**Lower body that is drawn with the hair.** On some agents the bare legs and the hair are one draw. Glossify skips that draw so the hair stays matte, and the legs in that same draw stay matte too. Seen on Alex, Ellen, Caesar, Soldier 0, and Vivian. Try base body: press **Ctrl+Alt+F9**. If those legs are still the stock mesh, the base body hook can gloss them without glossing the hair draw. If a skin mod replaced that mesh, the base cannot reach it, and patching the mod still skips the combined hair draw.
 
-Supports deep directory structures (including paths exceeding Windows' legacy 260-character `MAX_PATH` limit), both **female and male** playable characters, `Other Misc` / NPC mods, and upgrades from older patcher versions:
+**Lighter.** The lower body does not gloss.
 
-- **Standard ZZMI exports:** `TextureOverride*Body*`, `TextureOverride*Face*`
-- **Native Face auto-detection:** Automatically pairs body hashes to native face hashes (`BodyToFace` catalogue + local IB scan) when a skin uses the character's default face mesh
-- **DaisyMeow & LOD exports:** `Head` sections and `TextureOverride_LOD0.<hash>` sections
-- **Chinese-named exports (yyzj):** `shenti` (body), `lian` (face), `_IB_<hash>_shenti_Component<N>`
-- **Part-numbered & split meshes:** `TextureOverride<hash>Part<N>`, `Torso` / `Legs` splits
-- **Animated & multi-toggle mods:** Local `CommandList` draw chains
-- **Grace Howard & Nicole Demara:** Dedicated handling for `Gracebody` / `_IB_Grace Howard_` and texture-only face overrides
+**Ye Shunguang.** The stock body and stock legs can gloss. A skin that replaces the legs, including Monikirakira, keeps those replaced legs matte until that mod is patched.
 
-Sections containing `hair`, `weapon`, `shadow`, `outline`, `wing`, `mask`, `bangboo`, or `custom` are automatically excluded.
+On Grace Howard's Bondage & Reverse Bunny skin, the face can turn black if that skin's own face toggle and face gloss are both on. Turn face gloss off, switch the skin's face, then turn face gloss back on.
 
-### Known Interaction
-- On Grace Howard's *Bondage & Reverse Bunny* skin, the face may appear black if the skin's own face toggle and face gloss are enabled simultaneously. Workaround: toggle **Face Gloss off**, switch the skin's face toggle, then toggle **Face Gloss back on**.
+## Build
 
----
-
-## Build from Source
-
-No Visual Studio installation or external NuGet packages are required—only Windows' built-in `.NET Framework 4.x` C# compiler:
+Windows .NET Framework 4.x is enough. Visual Studio is not required.
 
 ```powershell
 .\build.ps1
 ```
 
-This embeds `controller.ini` into `OilSkin.cs` and outputs `bin\Glossy Skin Patcher.exe`.
-
----
+That writes `bin\Glossify Patcher.exe`.
 
 ## Credits
 
-- Original dual-layer matcap shader concept: [neerajksah / KatTDev's Wuthering Waves mod](https://gamebanana.com/mods/733773)
-- Zenless Zone Zero OilSkin adaptation: [GameBanana ZZZ OilSkin](https://gamebanana.com/mods/741702)
-- Character mesh hash catalogue: [ZZ-Model-Importer-Assets](https://github.com/leotorrez/ZZ-Model-Importer-Assets)
+- Oil shader and textures: [油光皮肤 OilSkin](https://gamebanana.com/mods/741702), a ZZZ port of [KatTDev's Wuthering Waves matcap](https://gamebanana.com/mods/733773). Not included here.
+- Mesh hash list: [ZZ-Model-Importer-Assets](https://github.com/leotorrez/ZZ-Model-Importer-Assets)

@@ -325,10 +325,59 @@ class Glossify {
   return Path.Combine(lib, "Glossify", "GlossifySkinToggles.ini");
  }
 
+ static string CompactKeyLabel(string label) {
+  if (string.IsNullOrEmpty(label)) return "";
+  string s = label.ToUpperInvariant().Replace(" + ", " ").Replace("NUMPAD", "NUM");
+  s = Regex.Replace(s, @"\s+", " ").Trim();
+  if (s.Length > 16) s = s.Substring(0, 16);
+  return s;
+ }
+
+ static string Int4Literal(string text, int offset) {
+  int a = offset < text.Length ? text[offset] : 0;
+  int b = offset + 1 < text.Length ? text[offset + 1] : 0;
+  int c = offset + 2 < text.Length ? text[offset + 2] : 0;
+  int d = offset + 3 < text.Length ? text[offset + 3] : 0;
+  return "int4(" + a + ", " + b + ", " + c + ", " + d + ")";
+ }
+
+ static string KeyDrawLine(string yName, string label) {
+  string text = CompactKeyLabel(label);
+  return "        DrawStr(pix, float2(196, " + yName + "), " + text.Length
+   + ", " + Int4Literal(text, 0)
+   + ", " + Int4Literal(text, 4)
+   + ", " + Int4Literal(text, 8)
+   + ", " + Int4Literal(text, 12)
+   + ", key, result);";
+ }
+
+ static bool UiKeysMatch(string togglesPath, Settings cfg) {
+  string hlsl = Path.Combine(Path.GetDirectoryName(CleanPath(togglesPath)), "GlossifyToggles.hlsl");
+  if (!File.Exists(LP(hlsl))) return true;
+  string src = File.ReadAllText(LP(hlsl));
+  return src.Contains(KeyDrawLine("yModFace", cfg.faceKeyLabel).Trim())
+   && src.Contains(KeyDrawLine("yModBody", cfg.bodyKeyLabel).Trim());
+ }
+
+ static bool SyncUiKeyLabels(string togglesPath, Settings cfg) {
+  string dir = Path.GetDirectoryName(CleanPath(togglesPath));
+  string hlsl = Path.Combine(dir, "GlossifyToggles.hlsl");
+  if (!File.Exists(LP(hlsl))) return false;
+  string src = File.ReadAllText(LP(hlsl));
+  string next = Regex.Replace(src, @"(?m)^[ \t]*DrawStr\(pix, float2\(196, yModFace\),.*$", KeyDrawLine("yModFace", cfg.faceKeyLabel));
+  next = Regex.Replace(next, @"(?m)^[ \t]*DrawStr\(pix, float2\(196, yModBody\),.*$", KeyDrawLine("yModBody", cfg.bodyKeyLabel));
+  if (next == src) return false;
+  File.WriteAllText(LP(hlsl), next);
+  try {
+   foreach (string bin in Directory.GetFiles(LP(dir), "GlossifyToggles.*.bin")) File.Delete(bin);
+  } catch { }
+  return true;
+ }
+
  static bool TogglesSynced(string togglesPath, Settings cfg) {
   if (string.IsNullOrEmpty(togglesPath) || !File.Exists(LP(togglesPath))) return false;
   byte[] expected = Encoding.UTF8.GetBytes(TogglesIni(cfg.bodyKey, cfg.faceKey));
-  return File.ReadAllBytes(LP(togglesPath)).SequenceEqual(expected);
+  return File.ReadAllBytes(LP(togglesPath)).SequenceEqual(expected) && UiKeysMatch(togglesPath, cfg);
  }
 
  static string CleanModBackupName(string modFolder) {
@@ -482,21 +531,27 @@ class Glossify {
 
  static bool SyncTogglesIni(string togglesPath, Settings cfg, string backupRoot) {
   byte[] expected = Encoding.UTF8.GetBytes(TogglesIni(cfg.bodyKey, cfg.faceKey));
+  bool iniChanged = true;
   if (File.Exists(LP(togglesPath))) {
    byte[] cur = File.ReadAllBytes(LP(togglesPath));
-   if (cur.SequenceEqual(expected)) return false;
-   string toggleFolder = Path.GetDirectoryName(CleanPath(togglesPath));
-   if (BackupsForMod(backupRoot, toggleFolder).Count == 0) {
-    string bdir = AllocateBackupDir(backupRoot, toggleFolder);
-    Directory.CreateDirectory(LP(bdir));
-    File.WriteAllBytes(LP(Path.Combine(bdir, "GlossifySkinToggles.ini")), cur);
-    File.WriteAllText(LP(Path.Combine(bdir, "backup-map.json")), json.Serialize(new { folder = toggleFolder, created = new string[0] }));
+   iniChanged = !cur.SequenceEqual(expected);
+   if (iniChanged) {
+    string toggleFolder = Path.GetDirectoryName(CleanPath(togglesPath));
+    if (BackupsForMod(backupRoot, toggleFolder).Count == 0) {
+     string bdir = AllocateBackupDir(backupRoot, toggleFolder);
+     Directory.CreateDirectory(LP(bdir));
+     File.WriteAllBytes(LP(Path.Combine(bdir, "GlossifySkinToggles.ini")), cur);
+     File.WriteAllText(LP(Path.Combine(bdir, "backup-map.json")), json.Serialize(new { folder = toggleFolder, created = new string[0] }));
+    }
    }
   }
-  Write(togglesPath, expected);
-  string hkCache = Path.Combine(Path.GetDirectoryName(CleanPath(togglesPath)), "hotkeys.json");
-  if (File.Exists(LP(hkCache))) File.Delete(LP(hkCache));
-  return true;
+  if (iniChanged) {
+   Write(togglesPath, expected);
+   string hkCache = Path.Combine(Path.GetDirectoryName(CleanPath(togglesPath)), "hotkeys.json");
+   if (File.Exists(LP(hkCache))) File.Delete(LP(hkCache));
+  }
+  bool uiChanged = SyncUiKeyLabels(togglesPath, cfg);
+  return iniChanged || uiChanged;
  }
 
  // Native body-to-face IB pairs, ZZ-Model-Importer-Assets revision e1673e8993.
@@ -1323,23 +1378,24 @@ class Glossify {
 
   // Row 2: Separate Body & Face Toggle Keybinds bar
   var keyCard = new Panel { Dock = DockStyle.Fill, AutoSize = true, BackColor = Color.FromArgb(245, 247, 250), BorderStyle = BorderStyle.FixedSingle, Padding = new Padding(10, 6, 10, 6), Margin = new Padding(0, 0, 0, 8) };
-  var keyRow = new TableLayoutPanel { Dock = DockStyle.Fill, AutoSize = true, ColumnCount = 9, RowCount = 1, BackColor = Color.Transparent };
+  var keyRow = new TableLayoutPanel { Dock = DockStyle.Fill, AutoSize = true, ColumnCount = 8, RowCount = 2, BackColor = Color.Transparent };
   keyRow.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
   keyRow.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
   keyRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 155f));
   keyRow.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
   keyRow.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 155f));
-  keyRow.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
   keyRow.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f));
   keyRow.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
   keyRow.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+  keyRow.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+  keyRow.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
   var keyTitle = new Label { Text = "Gloss Toggles:", Font = new Font("Segoe UI", 9f, FontStyle.Bold), AutoSize = true, Anchor = AnchorStyles.Left, ForeColor = Color.FromArgb(35, 38, 42) };
-  var bodyKeyLbl = new Label { Text = "Body Gloss:", AutoSize = true, Anchor = AnchorStyles.Left, Margin = new Padding(12, 0, 5, 0), ForeColor = Color.FromArgb(55, 55, 55) };
+  var bodyKeyLbl = new Label { Text = "Mod Body:", AutoSize = true, Anchor = AnchorStyles.Left, Margin = new Padding(12, 0, 5, 0), ForeColor = Color.FromArgb(55, 55, 55) };
   var bodyKeyBox = new TextBox { Text = cfg.bodyKeyLabel, ReadOnly = true, TextAlign = HorizontalAlignment.Center, Dock = DockStyle.Fill, BackColor = Color.White, ForeColor = Color.FromArgb(25, 25, 25), BorderStyle = BorderStyle.FixedSingle, Cursor = Cursors.Hand, Margin = new Padding(0, 2, 0, 2) };
-  var faceKeyLbl = new Label { Text = "Face Gloss:", AutoSize = true, Anchor = AnchorStyles.Left, Margin = new Padding(14, 0, 5, 0), ForeColor = Color.FromArgb(55, 55, 55) };
+  var faceKeyLbl = new Label { Text = "Mod Face:", AutoSize = true, Anchor = AnchorStyles.Left, Margin = new Padding(14, 0, 5, 0), ForeColor = Color.FromArgb(55, 55, 55) };
   var faceKeyBox = new TextBox { Text = cfg.faceKeyLabel, ReadOnly = true, TextAlign = HorizontalAlignment.Center, Dock = DockStyle.Fill, BackColor = Color.White, ForeColor = Color.FromArgb(25, 25, 25), BorderStyle = BorderStyle.FixedSingle, Cursor = Cursors.Hand, Margin = new Padding(0, 2, 0, 2) };
-  var keyHint = new Label { Text = "(click a box & press shortcut; Body & Face toggle separately)", UseMnemonic = false, Font = new Font("Segoe UI", 8.3f), AutoSize = true, Anchor = AnchorStyles.Left, ForeColor = Color.FromArgb(115, 118, 124), Margin = new Padding(10, 0, 6, 0) };
+  var keyHint = new Label { Text = "Click a box, then press the shortcut. Mod Body and Mod Face are separate keys.", UseMnemonic = false, Font = new Font("Segoe UI", 8.3f), AutoSize = true, Anchor = AnchorStyles.Left, ForeColor = Color.FromArgb(115, 118, 124), Margin = new Padding(0, 2, 0, 0) };
   var saveKeysBtn = MakeButton("Apply Keybinds", Color.FromArgb(0, 112, 168), 116);
   saveKeysBtn.Margin = new Padding(0, 0, 6, 0);
   var resetKeysBtn = MakeButton("Reset", Color.FromArgb(105, 110, 118), 64);
@@ -1349,10 +1405,10 @@ class Glossify {
   keyRow.Controls.Add(bodyKeyBox, 2, 0);
   keyRow.Controls.Add(faceKeyLbl, 3, 0);
   keyRow.Controls.Add(faceKeyBox, 4, 0);
-  keyRow.Controls.Add(keyHint, 5, 0);
-  keyRow.Controls.Add(new Label { AutoSize = true }, 6, 0);
-  keyRow.Controls.Add(saveKeysBtn, 7, 0);
-  keyRow.Controls.Add(resetKeysBtn, 8, 0);
+  keyRow.Controls.Add(saveKeysBtn, 6, 0);
+  keyRow.Controls.Add(resetKeysBtn, 7, 0);
+  keyRow.Controls.Add(keyHint, 0, 1);
+  keyRow.SetColumnSpan(keyHint, 8);
   keyCard.Controls.Add(keyRow);
   layout.Controls.Add(keyCard, 0, 2);
 
@@ -1568,7 +1624,7 @@ class Glossify {
 
   saveKeysBtn.Click += (s, e) => {
    if (string.Equals(cfg.bodyKey, cfg.faceKey, StringComparison.OrdinalIgnoreCase)) {
-    MessageBox.Show("Body Gloss and Face Gloss are bound to the same shortcut (" + cfg.bodyKeyLabel + ").\nPlease choose two different shortcuts so you can toggle Body and Face separately.", "Duplicate Keybind", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+    MessageBox.Show("Mod Body and Mod Face are bound to the same shortcut (" + cfg.bodyKeyLabel + ").\nPlease choose two different shortcuts so you can toggle Mod Body and Mod Face separately.", "Duplicate Keybind", MessageBoxButtons.OK, MessageBoxIcon.Warning);
     return;
    }
    try {
@@ -1584,8 +1640,8 @@ class Glossify {
     bool changed = SyncTogglesIni(tp, cfg, bak);
     updateToggleInfo();
     MessageBox.Show((changed ? "Updated global glossy toggle keybinds!" : "Keybinds are already up to date!")
-     + "\n\nBody Gloss Toggle:  " + cfg.bodyKeyLabel
-     + "\nFace Gloss Toggle:  " + cfg.faceKeyLabel
+     + "\n\nMod Body:  " + cfg.bodyKeyLabel
+     + "\nMod Face:  " + cfg.faceKeyLabel
      + "\n\nFile: " + tp
      + "\n\nPress F10 in Zenless Zone Zero to reload mods.", "Glossify Keybinds", MessageBoxButtons.OK, MessageBoxIcon.Information);
    } catch (Exception ex) {
@@ -1675,7 +1731,7 @@ class Glossify {
 
   apply.Click += (s, e) => {
    if (string.Equals(cfg.bodyKey, cfg.faceKey, StringComparison.OrdinalIgnoreCase)) {
-    MessageBox.Show("Body Gloss and Face Gloss are bound to the same shortcut (" + cfg.bodyKeyLabel + ").\nPlease choose two different shortcuts before patching.", "Duplicate Keybind", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+    MessageBox.Show("Mod Body and Mod Face are bound to the same shortcut (" + cfg.bodyKeyLabel + ").\nPlease choose two different shortcuts before patching.", "Duplicate Keybind", MessageBoxButtons.OK, MessageBoxIcon.Warning);
     return;
    }
    apply.Enabled = false;
@@ -1707,7 +1763,7 @@ class Glossify {
     errors.Add(ex.Message);
    }
    string msg = "Patched " + count + " skin" + (count == 1 ? "" : "s") + "."
-    + "\nBody Toggle: " + cfg.bodyKeyLabel + "   |   Face Toggle: " + cfg.faceKeyLabel
+    + "\nMod Body: " + cfg.bodyKeyLabel + "   |   Mod Face: " + cfg.faceKeyLabel
     + (tp != null ? "\nGlobal Toggles: " + tp + (togglesUpdated ? " (updated)" : "") : "\nNote: Select your ZZMI Mods folder and click 'Apply Keybinds' to install GlossifySkinToggles.ini.")
     + "\nBackups stored in: " + bak
     + "\n\nTo keep gloss off NPCs, turn stock face (Ctrl+Alt+F8) and stock body (Ctrl+Alt+F9) off, and patch each skin mod on its own.";

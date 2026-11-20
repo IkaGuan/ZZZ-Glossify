@@ -1,146 +1,119 @@
 # Glossify
 
-Gloss for stock faces and bodies in Zenless Zone Zero, plus a patcher for skin mods that replace the mesh.
+Glossify makes skin look wet and shiny in Zenless Zone Zero.
 
 中文说明：[README.zh-CN.md](README.zh-CN.md)
 
-Glossify does not include the oil shader or its textures. Those stay in the author's oil mod.
+The shine comes from the oil mod. Glossify does not include that mod.
 
-## Dependencies
+## Before you start
 
-Install these before Glossify.
+1. Install **ZZMI** with XXMI Launcher or FlairX. Use the one you already have.
+2. Install **油光皮肤 OilSkin**: [GameBanana 741702](https://gamebanana.com/mods/741702).
 
-1. **ZZMI** for Zenless Zone Zero. XXMI Launcher and FlairX Mod Manager both provide it. Use the one you already play with.
-2. **油光皮肤 OilSkin**, the shared oil engine: [GameBanana 741702](https://gamebanana.com/mods/741702). Use the folder that contains `Matcap_ZZZ.ini` and the `Oil` textures. Glossify does not ship those files.
-3. Use the engine whose style key is **Shift + Numpad \***, cycling styles 1 through 6. Leave any second copy of that engine out of the mods folder. The author's later package binds plain **Numpad \*** to style, and that key is also Glossify's patched-skin body toggle.
+Use the oil mod whose style key is **Shift+Numpad \***. It cycles styles 1 through 6. Keep one copy. A later package uses plain **Numpad \*** for style, and Glossify uses that key for patched body.
 
-## Installation
+## Install
 
-Glossify and the oil engine are two separate folders. Both belong in the ZZMI mods folder. Press **F10** in game after you add or change them. F10 reloads mods whether you use XXMI Launcher or FlairX.
+Press **F10** in game after you add or change a folder. F10 reloads mods.
 
-**XXMI Launcher**
+### XXMI Launcher
 
-1. Install ZZMI for Zenless Zone Zero.
-2. Put the oil engine folder in the ZZMI `Mods` folder, the same folder as your other ZZMI mods. It contains `Matcap_ZZZ.ini` and an `Oil` folder.
-3. Put the `Glossify` folder in that same `Mods` folder, beside the oil folder.
-4. Start the game and press **F10**.
+1. Put the oil folder in `ZZMI\Mods`. It contains `Matcap_ZZZ.ini` and an `Oil` folder.
+2. Put the `Glossify` folder in `ZZMI\Mods`, next to the oil folder.
+3. Start the game and press **F10**.
 
-A folder sitting in `Mods` is already loaded. XXMI Launcher has no separate enable switch for it.
+A folder in `Mods` loads by itself.
 
-**FlairX Mod Manager**
+### FlairX
 
-1. Install the oil engine in FlairX and leave that entry enabled.
-2. Put `Glossify` in the mods library. A category folder such as `Mods\Bangboo Skins` is fine.
-3. Enable `Glossify` in FlairX and leave it enabled.
-4. Press **F10** in game.
+1. Enable the oil mod, and leave it enabled.
+2. Put `Glossify` in your mods library and enable it. `Mods\Bangboo Skins` is a fine place.
+3. Press **F10** in game.
 
-FlairX turns a mod off by renaming the folder so the name starts with `DISABLED_`. Leave the Glossify folder without that prefix.
+Leave the Glossify folder name unchanged. FlairX turns a mod off by adding `DISABLED_` to the front of the folder name.
 
-| Folder | Where it comes from | What it does |
-| --- | --- | --- |
-| `Glossify` | This download. | Stock faces and bodies, the face engine, the UI interface, and the keys for patched skins. One folder. |
-| `油光皮肤 OilSkin` | [GameBanana 741702](https://gamebanana.com/mods/741702) | The oil shader and textures. |
+Put Glossify beside the oil folder. An oil update replaces the oil folder and removes anything stored inside it.
 
-Keep Glossify beside the oil folder. An oil update replaces the oil folder and would remove anything stored inside it.
+The download is the `Glossify` folder. `Glossify Patcher.exe` can sit anywhere on your PC. It does not go in `Mods`. You need it only when a skin replaced the body and that body stayed matte.
 
-`Glossify` contains `GlossifyBase.ini`, `FaceFallback.hlsl`, `GlossifyFaceEngine.ini`, `GlossifyFaceEngine\FaceOil.hlsl`, `GlossifyToggles.ini`, `GlossifyToggles.hlsl`, `Font.dds`, `GlossifySkinToggles.ini`, and `mod.json`.
+After F10, face gloss is on. Body gloss stays off until you press **Ctrl+Alt+F9**.
 
-`Glossify Patcher.exe` is for a skin the stock gloss does not cover. It can sit anywhere on the PC. It does not go inside `Mods`.
+A `.bin` file next to an `.hlsl` file is a cache the game writes. It is not part of the download.
 
-After F10, look at a stock character. Face gloss starts on. Body gloss stays off until you press **Ctrl+Alt+F9**.
+## How to use
 
-Shader files named `.bin` next to an `.hlsl` are a cache the game writes. They are not part of the download.
+Press **Ctrl+Alt+F7** to open the UI. Drag it anywhere. Click X, or press the same key, to close it.
 
-## How to Use
+**Stock face** and **stock body** shine the game's original models. Your agent, NPCs, and enemies use those models, so these two switches shine all of them.
 
-Glossify makes skin look wet and shiny. Press **Ctrl+Alt+F7** to open the UI interface. Drag it anywhere. Click X, or press the same key, to close it.
+**Patched body** and **patched face** shine a skin you patched. They work while that skin is on screen. The UI then says **PATCHED** and shows those switches. On any other model it says **STOCK** and hides them.
 
-The UI interface has two kinds of gloss.
+| You want | Set this |
+| --- | --- |
+| My agent shiny. NPCs and enemies matte. | Wear a patched skin. Patched body on. Patched face on. Stock face off. Stock body off. |
+| Everyone shiny. | Stock face on. Stock body on. A replaced body stays matte until you patch that skin. |
+| This patched skin keeps its own look. | Set the style and strength, then click **SAVE LOOK** while that skin is on screen. |
+| All gloss off. | Turn off stock face, stock body, patched body, and patched face. |
 
-**Stock face** and **stock body** follow the game's original faces and bodies. Your agent, NPCs, and enemies share those models, so these switches gloss all of them together. Glossify has no way to gloss your stock agent while leaving NPCs and enemies matte.
+Leave the Glossify folder loaded. Closing that folder also turns off gloss on patched skins.
 
-**Patched body** and **patched face** follow a skin you patched with Glossify Patcher. They apply while that skin is on screen. The UI interface then says PATCHED and shows those two switches. On any other model it says STOCK and hides them.
+The oil keys change the stock look. **Shift+Numpad \*** picks the style. **Numpad +** and **Numpad −** change the strength. **SAVE LOOK** stores that look on the patched skin. Click it again to store a new one.
 
-**My agent glossy, NPCs and enemies matte**
+With stock body on, a patched skin's body also shines while it is on screen. With stock face on, a stock face that the skin still uses also shines.
 
-Wear a skin you have patched, and set:
+Hair stays matte. Anyone wearing that same patched model shines too.
 
-- Patched body on (**Numpad \***)
-- Patched face on (**Alt+Numpad \***)
-- Stock face off (**Ctrl+Alt+F8**)
-- Stock body off (**Ctrl+Alt+F9**)
-
-Leave the Glossify folder installed and loaded. Original faces and bodies, including NPCs and enemies, stay matte. Your patched skin keeps its gloss.
-
-**Everyone glossy**
-
-- Stock face on (**Ctrl+Alt+F8**)
-- Stock body on (**Ctrl+Alt+F9**)
-
-Original faces and bodies shine, including your agent, NPCs, and enemies. A skin that replaced the body stays matte until you patch it. With stock body on, a patched skin's body also shines while that skin is on screen.
-
-**A patched skin with its own shine**
-
-The oil keys always edit the stock look: **Shift+Numpad \*** changes style, **Numpad +** and **Numpad −** change strength. To give a patched skin a different look, set the style and strength you want, open the UI interface while that skin is on screen, and click **SAVE LOOK**. The skin remembers that style and strength. After that, the oil keys change the stock look only. Click **SAVE LOOK** again to store the current stock look on that skin.
-
-**Gloss off**
-
-Turn stock face and stock body off. On a patched skin, also turn patched body and patched face off. Stock body, while it is on, still shines a patched skin's body. Stock face, while it is on, still shines a stock face that a skin is still using.
-
-Hair stays matte. A patched mesh shines on anyone who draws that same mesh.
+The patched shortcuts are printed on the UI. Until you change them, patched body is **Numpad \*** and patched face is **Alt+Numpad \***.
 
 ## Keys
 
-ZZMI includes a modder's display called hunting mode. Press **Numpad 0** and green text appears on the screen, listing model data. While that green text is up, **Numpad \***, **Numpad +**, and **Numpad −** go to the hunting display instead of gloss. Press **Numpad 0** again until the green text is gone, then use the gloss keys.
+If green text is covering the screen, press **Numpad 0** until it disappears. That text is ZZMI's hunting display. While it is up, Numpad \*, +, and − do not change the gloss.
 
-| Action | Key | Starts |
+| Action | Key | Starts as |
 | --- | --- | --- |
-| Show or hide the UI interface | Ctrl+Alt+F7 | Hidden. Drag it anywhere. Click X, or press the same key, to close it. |
+| Open or close the UI | Ctrl+Alt+F7 | Closed |
 | Stock face | Ctrl+Alt+F8 | On |
 | Stock body | Ctrl+Alt+F9 | Off |
-| Patched skin face | Alt+Numpad \* | On |
-| Patched skin body | Numpad \* | On |
-| Oil style | Shift+Numpad \* | Style 1 through 6, on the oil engine |
-| Stronger | Numpad + | The UI interface shows 0, 2, 4, 6, 8, 10 |
-| Weaker | Numpad − | The UI interface shows 10 down to 0, one step at a time |
+| Patched face | Printed on the UI | Alt+Numpad \* |
+| Patched body | Printed on the UI | Numpad \* |
+| Style | Shift+Numpad \* | 1 through 6 |
+| Stronger | Numpad + | 0, 2, 4, 6, 8, 10 |
+| Weaker | Numpad − | 10 down to 0 |
 
-The strength number on the UI interface is the engine's 0.0–1.0 shine, shown as 0 through 10. Numpad + uses the engine's 0.2 steps, so it skips the odd numbers.
+The strength number runs from 0 to 10. Numpad + moves two steps, so it skips the odd numbers.
 
-Each switch is saved. If a key seems to do nothing the first time, press F10 once and try the key again.
+Each switch is remembered. If a key does nothing the first time, press F10 and try again.
 
-To change the patched-skin keys, open Glossify Patcher, click **Body Gloss** or **Face Gloss**, press the new combo, then click **Apply Keybinds** and press F10. Already patched skins pick up the new keys. Esc cancels a key. **Reset** restores Numpad \* and Alt+Numpad \*.
+To change a patched key, open Glossify Patcher, click **Mod Body** or **Mod Face**, press the new shortcut, then click **Apply Keybinds** and press F10. The UI shows the new shortcut. Esc cancels a key. **Reset** restores Numpad \* and Alt+Numpad \*.
 
-## When a skin stays matte
+## A skin stayed matte
 
-Use stock gloss first. If the character is already glossy, leave that skin alone. A texture swap that still draws the original body gets gloss from stock body.
+If the character is already shiny, leave that skin alone. A skin that only swaps textures still gets stock gloss.
 
-Use the patcher when a skin replaces the body, legs, or outfit and those parts stay matte. Patch that one skin. Patch skins one at a time.
+Patch a skin when it replaces the body, legs, or outfit and those parts stay matte. Patch one skin at a time.
 
-The patcher hooks a face section that draws with a number, with `drawindexed = auto`, or with `draw =`. It also hooks a face section that only swaps the face texture and never draws, including sections named `脸`. A section named Head is hooked only when that mesh is the character's face. Hair pieces, earrings, and blend-shape passes stay skipped. A skin patched before this face fix keeps the old result until you restore that skin and patch it again.
-
-## Patch a skin
-
-For NPCs and enemies, use the setups in How to Use. Leave the Glossify folder loaded while you do this. Turning that folder off also turns off face gloss and the patched-skin keys, and patched faces go matte.
-
-1. Run `Glossify Patcher.exe`. Windows SmartScreen may say "Windows protected your PC" the first time, because the exe is unsigned. **More info**, then **Run anyway**. You can also compile it yourself with `.\build.ps1`.
-2. **Mods Folder:** paste a skin folder, a character folder, or the `ZZMI\Mods` library, then Enter. Or click **Choose Folder**.
-3. Leave checked only the green **Patch** rows that still need gloss. Click **Patch**.
+1. Run `Glossify Patcher.exe`. If Windows says it protected your PC, click **More info**, then **Run anyway**. You can also build it with `.\build.ps1`.
+2. Paste a skin folder, a character folder, or your `ZZMI\Mods` folder into **Mods Folder**, then press Enter. Or click **Choose Folder**.
+3. Leave checked only the green **Patch** rows. Click **Patch**.
 4. Press F10.
 
-| What you see | What to do |
+| You see | Do this |
 | --- | --- |
-| Stock character, or a skin, already glossy | Leave it. |
+| Already shiny | Leave it. |
 | A replaced body, legs, or outfit stayed matte | Patch that skin. |
-| NPCs or enemies turned glossy | Turn stock face and stock body off, and patch only the skins that should shine. See How to Use. |
-| You want the original files back | **Restore Backups**, check that skin, confirm, then F10. |
+| NPCs or enemies turned shiny | Turn stock face and stock body off. Patch only the skins that should shine. |
+| You want the old files back | **Restore Backups**, check that skin, confirm, then F10. |
 
-Backups are the edited `.ini` files only. They go to `%LOCALAPPDATA%\OilSkinPatcher\Backups` unless you click **Change...**. Each skin keeps one backup. **Open Folder** shows them. Restore puts the original ini files back, removes `oilskin.json` and `OilSkinSwitch.ini` from that skin, and deletes the backup. If you use FlairX, disabling a skin renames its folder with `DISABLED_` at the front. Restore still finds the skin after that rename.
+The patcher skips hair, earrings, and blend passes. It treats a Head section as the face only when that model is the face. A skin patched before this fix needs a restore, then a new patch.
+
+Backups are the edited `.ini` files. They go to `%LOCALAPPDATA%\OilSkinPatcher\Backups` unless you click **Change...**. Each skin keeps one backup. **Open Folder** shows them. Restore puts the original ini files back and removes `oilskin.json` and `OilSkinSwitch.ini`. If FlairX added `DISABLED_` to the folder name, restore still finds the skin.
 
 | Colour | Status | What to do |
 | --- | --- | --- |
 | Green | Patch | Ready. Checked by default. |
 | Grey | Up to Date | Already patched with this version. |
-| Grey | Skipped - Built-in Matcap | The skin author already has an oil shader. Leave it on their keys. |
+| Grey | Skipped - Built-in Matcap | This skin already has its own oil shader. Use the author's keys. |
 | Grey | Skipped - No Draws | Nothing to gloss, such as a weapon-only or hair-only folder. |
 | Orange | Manual Integration | Has an `OilSkinSwitch.ini` this tool did not write. Left alone. |
 | Orange | Needs Review | Read the note after the dash. |
@@ -148,13 +121,13 @@ Backups are the edited `.ini` files only. They go to `%LOCALAPPDATA%\OilSkinPatc
 
 ## Limits
 
-Hashes are exact. A game update that changes a mesh turns that character's gloss off until the list is refreshed.
+A game update can change a character's model. That character's gloss turns off until Glossify is updated.
 
 **Seth.** No face gloss and no body gloss.
 
-**Roxy.** Face gloss works. Body gloss does not. Her body hash `d5e1e7ff` is not in Glossify.
+**Roxy.** Face gloss works. Body gloss does not.
 
-**Lower body that is drawn with the hair.** Some agents draw the bare legs and the hair together. Glossify skips that draw so the hair stays matte, and the legs in that same draw stay matte too. Stock body (**Ctrl+Alt+F9**) can still gloss those legs when they are the original mesh. A skin that replaced that mesh keeps those legs matte, and patching still skips the combined hair draw.
+**Legs drawn with the hair.** Some agents draw the bare legs and the hair together. Glossify skips that pass, so the hair and those legs stay matte. Stock body can still shine the legs when they are the original model. A skin that replaced that model keeps the legs matte.
 
 ## Build
 

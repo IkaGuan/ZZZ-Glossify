@@ -153,9 +153,9 @@ void main(VsOut input, out float4 result : SV_Target0) {
     DrawStr(pix, float2(16, yStatus), 9, int4(79, 78, 32, 83), int4(67, 82, 69, 69), int4(78, 0, 0, 0), z, ink, result);
     if (patched > 0.5) {
         DrawStr(pix, float2(16, yModFace), 8, int4(77, 79, 68, 32), int4(70, 65, 67, 69), z, z, ink, result);
-        DrawStr(pix, float2(196, yModFace), 9, int4(65, 76, 84, 32), int4(78, 85, 77, 32), int4(42, 0, 0, 0), z, key, result);
+        DrawStr(pix, float2(196, yModFace), 9, int4(65, 76, 84, 32), int4(78, 85, 77, 32), int4(42, 0, 0, 0), int4(0, 0, 0, 0), key, result);
         DrawStr(pix, float2(16, yModBody), 8, int4(77, 79, 68, 32), int4(66, 79, 68, 89), z, z, ink, result);
-        DrawStr(pix, float2(196, yModBody), 5, int4(78, 85, 77, 32), int4(42, 0, 0, 0), z, z, key, result);
+        DrawStr(pix, float2(196, yModBody), 5, int4(78, 85, 77, 32), int4(42, 0, 0, 0), int4(0, 0, 0, 0), int4(0, 0, 0, 0), key, result);
     }
     DrawStr(pix, float2(16, yStyle), 9, int4(79, 73, 76, 32), int4(83, 84, 89, 76), int4(69, 0, 0, 0), z, ink, result);
     DrawStr(pix, float2(196, yStyle), 11, int4(83, 72, 73, 70), int4(84, 32, 78, 85), int4(77, 32, 42, 0), z, key, result);

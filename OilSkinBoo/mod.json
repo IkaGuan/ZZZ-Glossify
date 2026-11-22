@@ -1,5 +1,5 @@
 {
-  "author": "Glossify",
+  "author": "OilSkinBoo",
   "version": "1.0",
   "statusKeeperSync": true,
   "syncMethod": "namespace",
@@ -17,15 +17,27 @@
       ]
     },
     {
-      "namespace": "GlossifyToggles",
+      "namespace": "GlossifyMemory",
       "iniFiles": [
-        "GlossifyToggles.ini"
+        "GlossifyMemory.ini"
       ]
     },
     {
       "namespace": "GlossifySkinToggles",
       "iniFiles": [
         "GlossifySkinToggles.ini"
+      ]
+    },
+    {
+      "namespace": "GlossifyToggles",
+      "iniFiles": [
+        "GlossifyToggles.ini"
+      ]
+    },
+    {
+      "namespace": "zGlossifyLegMask",
+      "iniFiles": [
+        "zzLegMask.ini"
       ]
     }
   ]

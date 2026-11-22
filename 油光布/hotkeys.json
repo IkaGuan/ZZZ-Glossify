@@ -1,0 +1,118 @@
+{
+  "hotkeys": [
+    {
+      "key": "CTRL+ALT+F7",
+      "description": "菜单",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyMenu",
+      "keyName": "key",
+      "originalValue": "ctrl alt no_shift VK_F7"
+    },
+    {
+      "key": "CTRL+ALT+F8",
+      "description": "脸",
+      "iniFile": "GlossifyBase.ini",
+      "section": "KeyFace",
+      "keyName": "key",
+      "originalValue": "ctrl alt no_shift VK_F8"
+    },
+    {
+      "key": "CTRL+ALT+F9",
+      "description": "身体",
+      "iniFile": "GlossifyBase.ini",
+      "section": "KeyBody",
+      "keyName": "key",
+      "originalValue": "ctrl alt no_shift VK_F9"
+    },
+    {
+      "key": "MULTIPLY",
+      "description": "样式",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyStyle",
+      "keyName": "key",
+      "originalValue": "MULTIPLY"
+    },
+    {
+      "key": "NUM +",
+      "description": "加强",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyStronger",
+      "keyName": "key",
+      "originalValue": "ADD"
+    },
+    {
+      "key": "NUM -",
+      "description": "减弱",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyWeaker",
+      "keyName": "key",
+      "originalValue": "SUBTRACT"
+    },
+    {
+      "key": "LMB",
+      "description": "点击",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyClick",
+      "keyName": "key",
+      "originalValue": "VK_LBUTTON"
+    }
+  ],
+  "defaultHotkeys": [
+    {
+      "key": "CTRL+ALT+F7",
+      "description": "菜单",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyMenu",
+      "keyName": "key",
+      "originalValue": "ctrl alt no_shift VK_F7"
+    },
+    {
+      "key": "CTRL+ALT+F8",
+      "description": "脸",
+      "iniFile": "GlossifyBase.ini",
+      "section": "KeyFace",
+      "keyName": "key",
+      "originalValue": "ctrl alt no_shift VK_F8"
+    },
+    {
+      "key": "CTRL+ALT+F9",
+      "description": "身体",
+      "iniFile": "GlossifyBase.ini",
+      "section": "KeyBody",
+      "keyName": "key",
+      "originalValue": "ctrl alt no_shift VK_F9"
+    },
+    {
+      "key": "MULTIPLY",
+      "description": "样式",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyStyle",
+      "keyName": "key",
+      "originalValue": "MULTIPLY"
+    },
+    {
+      "key": "NUM +",
+      "description": "加强",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyStronger",
+      "keyName": "key",
+      "originalValue": "ADD"
+    },
+    {
+      "key": "NUM -",
+      "description": "减弱",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyWeaker",
+      "keyName": "key",
+      "originalValue": "SUBTRACT"
+    },
+    {
+      "key": "LMB",
+      "description": "点击",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyClick",
+      "keyName": "key",
+      "originalValue": "VK_LBUTTON"
+    }
+  ]
+}

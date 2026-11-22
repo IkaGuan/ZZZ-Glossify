@@ -1,0 +1,44 @@
+{
+  "author": "油光布",
+  "version": "1.0",
+  "statusKeeperSync": true,
+  "syncMethod": "namespace",
+  "namespaces": [
+    {
+      "namespace": "GlossifyBase",
+      "iniFiles": [
+        "GlossifyBase.ini"
+      ]
+    },
+    {
+      "namespace": "GlossifyFaceEngine",
+      "iniFiles": [
+        "GlossifyFaceEngine.ini"
+      ]
+    },
+    {
+      "namespace": "GlossifyMemory",
+      "iniFiles": [
+        "GlossifyMemory.ini"
+      ]
+    },
+    {
+      "namespace": "GlossifySkinToggles",
+      "iniFiles": [
+        "GlossifySkinToggles.ini"
+      ]
+    },
+    {
+      "namespace": "GlossifyToggles",
+      "iniFiles": [
+        "GlossifyToggles.ini"
+      ]
+    },
+    {
+      "namespace": "zGlossifyLegMask",
+      "iniFiles": [
+        "zzLegMask.ini"
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "hotkeys": [
     {
       "key": "CTRL+ALT+F7",
-      "description": "菜单",
+      "description": "Menu",
       "iniFile": "GlossifyToggles.ini",
       "section": "KeyMenu",
       "keyName": "key",
@@ -10,7 +10,7 @@
     },
     {
       "key": "CTRL+ALT+F8",
-      "description": "脸",
+      "description": "Face",
       "iniFile": "GlossifyBase.ini",
       "section": "KeyFace",
       "keyName": "key",
@@ -18,7 +18,7 @@
     },
     {
       "key": "CTRL+ALT+F9",
-      "description": "身体",
+      "description": "Body",
       "iniFile": "GlossifyBase.ini",
       "section": "KeyBody",
       "keyName": "key",
@@ -26,7 +26,7 @@
     },
     {
       "key": "MULTIPLY",
-      "description": "样式",
+      "description": "Style",
       "iniFile": "GlossifyToggles.ini",
       "section": "KeyStyle",
       "keyName": "key",
@@ -34,7 +34,7 @@
     },
     {
       "key": "NUM +",
-      "description": "加强",
+      "description": "Stronger",
       "iniFile": "GlossifyToggles.ini",
       "section": "KeyStronger",
       "keyName": "key",
@@ -42,7 +42,7 @@
     },
     {
       "key": "NUM -",
-      "description": "减弱",
+      "description": "Weaker",
       "iniFile": "GlossifyToggles.ini",
       "section": "KeyWeaker",
       "keyName": "key",
@@ -50,7 +50,7 @@
     },
     {
       "key": "LMB",
-      "description": "点击",
+      "description": "Click",
       "iniFile": "GlossifyToggles.ini",
       "section": "KeyClick",
       "keyName": "key",
@@ -60,7 +60,7 @@
   "defaultHotkeys": [
     {
       "key": "CTRL+ALT+F7",
-      "description": "菜单",
+      "description": "Menu",
       "iniFile": "GlossifyToggles.ini",
       "section": "KeyMenu",
       "keyName": "key",
@@ -68,7 +68,7 @@
     },
     {
       "key": "CTRL+ALT+F8",
-      "description": "脸",
+      "description": "Face",
       "iniFile": "GlossifyBase.ini",
       "section": "KeyFace",
       "keyName": "key",
@@ -76,7 +76,7 @@
     },
     {
       "key": "CTRL+ALT+F9",
-      "description": "身体",
+      "description": "Body",
       "iniFile": "GlossifyBase.ini",
       "section": "KeyBody",
       "keyName": "key",
@@ -84,7 +84,7 @@
     },
     {
       "key": "MULTIPLY",
-      "description": "样式",
+      "description": "Style",
       "iniFile": "GlossifyToggles.ini",
       "section": "KeyStyle",
       "keyName": "key",
@@ -92,7 +92,7 @@
     },
     {
       "key": "NUM +",
-      "description": "加强",
+      "description": "Stronger",
       "iniFile": "GlossifyToggles.ini",
       "section": "KeyStronger",
       "keyName": "key",
@@ -100,7 +100,7 @@
     },
     {
       "key": "NUM -",
-      "description": "减弱",
+      "description": "Weaker",
       "iniFile": "GlossifyToggles.ini",
       "section": "KeyWeaker",
       "keyName": "key",
@@ -108,7 +108,7 @@
     },
     {
       "key": "LMB",
-      "description": "点击",
+      "description": "Click",
       "iniFile": "GlossifyToggles.ini",
       "section": "KeyClick",
       "keyName": "key",

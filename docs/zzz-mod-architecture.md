@@ -1,6 +1,6 @@
 # ZZZ mod architecture
 
-Read this before building, patching, or debugging a Zenless Zone Zero mod. The installed game stack and the Phoenix packages are the source for how a mod loads. Glossify is a layer on top of that, not a second way to replace a mesh.
+Read this before building, patching, or debugging a Zenless Zone Zero mod. The installed game stack and the Phoenix packages are the source for how a mod loads. OilSkinBoo is a layer on top of that, not a second way to replace a mesh. The product name is OilSkinBoo. The namespaces stay `Glossify*`.
 
 Public guides (LeoTools ZZMI package, [INI basics](https://litho9.github.io/ini/ini-basics.html), [texture slots](https://litho9.github.io/ini/beyond-texture-slots.html)) describe the same loader. When a guide's slot table disagrees with the installed `Core\ZZMI` files, trust the install. Guides that call `ps-t0` the diffuse map are wrong for this game.
 
@@ -9,20 +9,37 @@ Public guides (LeoTools ZZMI package, [INI basics](https://litho9.github.io/ini/
 | Piece | Path |
 | --- | --- |
 | Live mods | `C:\Users\Ika\Desktop\zzz\FlairX Mod Manager\app\XXMI\ZZMI\Mods` |
+| Game | `C:\Program Files\HoYoPlay\games\ZenlessZoneZero Game` |
 | Loader | `ZZMI\d3dx.ini` includes `Core\ZZMI\main.ini`, then `include_recursive = Mods` |
 | Core | `ZZMI\Core\ZZMI\` — ZZMI 1.5.2 (`$version = 1.52`) |
 | Working character mods | `Mods\Phoenix Reffaella\` |
-| Oil engine | `Mods\Bangboo Skins\油光皮肤OilSkin\Matcap_ZZZ.ini` |
-| Glossify source | this repo, folder `Glossify\` |
+| Oil engine | `Mods\Bangboo Skins\油光皮肤OilSkin2\Matcap_ZZZ.ini` |
+| OilSkinBoo source | this repo. There is no `Glossify\` folder. |
 | Persisted variables | `ZZMI\d3dx_user.ini` |
 
 FlairX groups mods into character folders (`Phoenix Reffaella`, `Ellen Joe`, …). ZZMI does not care about those folders. It loads every `.ini` under `Mods`, including nested ones. A folder whose name starts with `DISABLED_` is off. Leave it off. Most Phoenix packages are disabled on purpose. Disabled does not mean broken. `PhoenixHalfNudeModRenKamui` is the enabled mesh mod. `DISABLED_Phoenix -yyzj-` is the clean split into body, face, and hair. Use both as structure, not as outfits to copy.
 
-`mod.json` is manager metadata (`author`, `version`, `syncMethod`). It does not decide what loads. `syncMethod: classic` is the usual skin. Glossify uses `syncMethod: namespace` so FlairX can map ini files to namespaces. An ini still loads if it is missing from that list.
+`mod.json` is manager metadata (`author`, `version`, `syncMethod`). It does not decide what loads. `syncMethod: classic` is the usual skin. OilSkinBoo uses `syncMethod: namespace` so FlairX can map ini files to namespaces. An ini still loads if it is missing from that list.
 
-`hotkeys.json` is the manager's key page. In-game keys are `[Key…]` sections.
+The repo packs all declare the same six namespaces: `GlossifyBase`, `GlossifyFaceEngine`, `GlossifyMemory`, `GlossifySkinToggles`, `GlossifyToggles`, `zGlossifyLegMask`. Enable one. A second pack fights over those variables. OilSkin 2 stays enabled beside that one pack. It is the engine, not a sixth pack.
 
-F10 reloads config and shader fixes. Ctrl+Alt+F10 wipes persisted values. A `.bin` beside an `.hlsl` file is a cache the game wrote. It is not source.
+| Folder | What it is |
+| --- | --- |
+| `OilSkinBoo` | English. Agents. No `WorldBeforeDraw`. |
+| `油光布` | Chinese of that pack. |
+| `OilSkinBoo-Glossify` | English. Also runs `CommandListWorldBeforeDraw`. |
+| `油光布-全油化版` | Chinese of that pack. |
+| `OilSkinBoo-Skin` | Agent-only, with the skin-mask path. No `WorldBeforeDraw`. |
+
+Installed copies live under `Mods\Bangboo Skins\`. On 22 Nov 2026 the enabled pair was `OilSkinBoo` and `油光皮肤OilSkin2`. The other packs were `DISABLED_`. List the directory before editing. A `DISABLED_` copy is often behind the repo. Change the repo folder and the live folder that is actually enabled.
+
+`hotkeys.json` is the manager's key page. In-game keys are `[Key…]` sections. Descriptions must be the section name with `Key` removed: Menu, Face, Body, Style, Stronger, Weaker, Click. FlairX matches on the description. A custom description is kept and the English section name is added, so the manager shows two lists. The in-game language is the shader. `Sid()` only recognizes `[KeyStyle]`, `[KeyStronger]`, `[KeyWeaker]`, `[KeyMenu]`, `[KeyFace]`, and `[KeyBody]`. Do not rename those sections. Finder log: `FlairX Mod Manager\app\Settings\HotkeyFinder.log`.
+
+`DrawStr` holds 16 characters, four `int4`s. A longer title is a second call, placed at the `Advance()` width of the first string plus a gap. A fixed x of 176 drew "-Glossify" through "OilSkinBoo" and the screen read "OilSkinBodlossify". The English font accepts codes 32–126. The Chinese font rejects `idx >= 128` (`idx = ch - 32`), so codes above 159 do not draw. 油, 光, 布 are 127, 128, 129. Do not invent a glyph id. 全, 化, and 版 are not in the atlas. The folder name can still be `油光布-全油化版`. FlairX shows that name.
+
+F10 reloads ini text, and hlsl whose beside-file `.bin` was removed. It does not drop a ShaderRegex already in the driver cache. Adding or removing a ShaderRegex needs a full game restart. Leave the `.bin` files unless the hlsl beside them changed. Deleting them forces a compile that freezes the game and drives commit up. Ctrl+Alt+F10 wipes persisted values. A `.bin` is a cache the game wrote. It is not source.
+
+`d3dx.ini` ships `cache_shaders = 0` and `hunting = 0`. OilSkin 2 sets `cache_shaders = 1` later, and the later assignment wins. A mod that sets `cache_shaders = 0` after that compiles for about 6.8 seconds on every reload. Leave hunting off. Green hunting text means Numpad 0 must be pressed before Numpad * changes the oil style.
 
 PowerShell is the shell on this machine. Python is not on PATH. From a PowerShell function, `return ,$list` keeps a one-item list as a list. A bare `return $list` unwraps it.
 
@@ -199,6 +216,8 @@ The header inside `Matcap_ZZZ.ini` shows the old hook, `run = OilSkin` then `dra
 
 Glossify decides which draws receive oil, and it remembers a look. It does not ship a mesh. Stock face and stock body shine the game's meshes, so they also shine NPCs and enemies. A skin that only swaps textures is still those meshes, so stock gloss reaches it. A skin that replaces the body stays matte until its draws are listed in `GlossifyBase.ini`.
 
+`OilSkinBoo-Skin` is the agent-only copy of Standard. It has the same face and body toggles, memory, and panel. It does not run `WorldBeforeDraw`, so NPCs, Bangboo, enemies, and scene objects stay matte. Ellen's hair draw stays matte. A body draw still includes the clothes in that mesh until the section binds a skin mask: `ps-t126` to a texture that is white on skin and black on cloth, and `$skin_mask = 1` before `CommandListBaseBody`. OilSkin writes `z122 = 0`, which ignores `t126`. BaseBody sets `z122 = 1` only when `$skin_mask` is 1. Do not add `WorldBeforeDraw` to this folder. Do not edit `Matcap_ZZZ.ini`.
+
 | File | Namespace | Job |
 | --- | --- | --- |
 | `GlossifyBase.ini` | GlossifyBase | Stock face and stock body, by hash |
@@ -244,7 +263,7 @@ A skin that replaces the body stays matte until its draws are listed in `Glossif
 
 The skin's controller runs in the skin's ini, which is later than GlossifyBase. On a patched body it applies that skin's saved style after Glossify's stock pass. That is intentional. A patched look does not follow the stock knobs. SAVE LOOK stores `$oilSkin` and `$oilStrength` into the skin's persist variables. Style 0 is stored as 2.
 
-All four switches off (stock face, stock body, patched body, patched face) leaves a patched skin matte. Closing the Glossify folder also removes gloss from patched skins, because the command lists it injected disappear with the folder.
+All four switches off (stock face, stock body, patched body, patched face) leaves a patched skin matte. Closing the OilSkinBoo pack also removes gloss from patched skins, because the command lists it injected disappear with the folder.
 
 ### Hair and legs
 
@@ -266,9 +285,32 @@ For Rina, Lighter, Caesar, Soldier 0, and Vivian the stock hair draw stays matte
 - A `Present` that clears `show_saved` or a save request unconditionally. The frame can Present again.
 - A new hash table copied into a third ini. Stock hashes live in `GlossifyBase.ini`. The save slots live in `GlossifyMemory.ini`. Edit that file in place.
 - UI, camera, and letterbox mods (the `UI` folder, TTLib) treated as character meshes. They are a different system.
+- A second OilSkinBoo pack enabled beside another. They share namespaces.
+- `cache_shaders = 0` in a mod that loads after OilSkin 2.
+- A ShaderRegex with a shader model and no pattern. It matches every shader of that model. An empty vertex-shader regex was tried and rejected.
+- `CommandListNpcFace` or `CommandListWorldFace`. They were added and removed. NPC faces do not sample `t125`, so the oil seal never sees them.
+- The Upper / Lower / Arms part picker. That experiment is aborted. Most agents do not draw those parts as separate meshes, and the picker crashed on agent swap.
+- A title placed at a fixed x, or a glyph id that is not already in that pack's font.
+- A `hotkeys.json` description other than Menu, Face, Body, Style, Stronger, Weaker, or Click.
 
 ## When a game update breaks a character
 
 The mesh hashes change. The architecture does not. Hunt the new position, blend, texcoord, and IB hashes, then update the stock tables in `GlossifyBase.ini` and the matching slot in `GlossifyMemory.ini`. A known hash still glosses when a skin wins the implicit draw, because `checktextureoverride` runs every match. A hash that is not listed stays matte.
 
-After any ini change, F10 in game.
+After any ini change, F10 in game. After a ShaderRegex is added or removed, restart the game.
+
+## When the game closes on this PC
+
+This machine has 16 GB of RAM and `C:\pagefile.sys` locked at 14000 MB, initial and maximum. The commit limit is about 29 GB. The GPU is an RTX 3080 Ti plus an AMD Radeon iGPU. WMI reports about 4 GB for the 3080 Ti. That field is wrong.
+
+A black screen here comes from the commit limit.
+
+1. Application event 1002, AppHang, means Windows closed `ZenlessZoneZero.exe` because it had stopped responding.
+2. `dwm.exe` faulting with `0xc00001ad` in `udwm.dll` or `dwmcore.dll` is `STATUS_COMMITMENT_LIMIT`. The paging file could not back the allocation. The desktop goes black, then Windows closes the game.
+3. System event 2004 from `Microsoft-Windows-Resource-Exhaustion-Detector` names the top consumers. The game is repeatedly 9–15 GB and has reached about 21 GB. Read the byte count in that event. A process virtual size near 50 GB is reserved address space, not usage.
+4. WER "BlueScreen" at the next login often attaches old minidumps. Check `C:\Windows\Minidump` write times. `111226-9656-01.dmp` is 12 Nov 2026, bugcheck `0x3B`. `102526-10687-01.dmp` is 25 Oct 2026, bugcheck `0xEF`. Kernel-Power 41 is an unclean reboot. Kernel-Power 109 with reason Kernel API is a requested reboot. No new dump means this episode was a hang.
+5. `amdxx64.dll` faults in a small process such as `OpenWith.exe`, and Paint dying with `8007000e`, during event 2004, come from the iGPU running out of memory.
+
+OilSkinBoo and OilSkin 2 are small files. Face normal copies are capped at 32. Their cost is shader work on the draws they hook. The gigabytes are enabled costume textures. On 22 Nov 2026 the heaviest were Velina OG & Bunny (about 990 MB of DDS), Ye Shunguang Flowing Night (about 936 MB), Nicole yyzj (about 664 MB), Yanagi Miko (about 404 MB), and Remielle White Ultimate (about 376 MB), with about 4 GB of DDS and 568 inis enabled in total. Re-measure after the mod list changes.
+
+Do not report that the mods have no performance problem because the game has no application fault. On this PC the failure is the commit limit. Do not delete `.bin` caches to clear it. F10 cannot revive a process Windows already closed. ZZMI does not write a useful log for this failure. Use the Windows event log.

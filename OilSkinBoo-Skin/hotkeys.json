@@ -1,0 +1,118 @@
+{
+  "hotkeys": [
+    {
+      "key": "CTRL+ALT+F7",
+      "description": "Menu",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyMenu",
+      "keyName": "key",
+      "originalValue": "ctrl alt no_shift VK_F7"
+    },
+    {
+      "key": "CTRL+ALT+F8",
+      "description": "Face",
+      "iniFile": "GlossifyBase.ini",
+      "section": "KeyFace",
+      "keyName": "key",
+      "originalValue": "ctrl alt no_shift VK_F8"
+    },
+    {
+      "key": "CTRL+ALT+F9",
+      "description": "Body",
+      "iniFile": "GlossifyBase.ini",
+      "section": "KeyBody",
+      "keyName": "key",
+      "originalValue": "ctrl alt no_shift VK_F9"
+    },
+    {
+      "key": "MULTIPLY",
+      "description": "Style",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyStyle",
+      "keyName": "key",
+      "originalValue": "MULTIPLY"
+    },
+    {
+      "key": "NUM +",
+      "description": "Stronger",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyStronger",
+      "keyName": "key",
+      "originalValue": "ADD"
+    },
+    {
+      "key": "NUM -",
+      "description": "Weaker",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyWeaker",
+      "keyName": "key",
+      "originalValue": "SUBTRACT"
+    },
+    {
+      "key": "LMB",
+      "description": "Click",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyClick",
+      "keyName": "key",
+      "originalValue": "VK_LBUTTON"
+    }
+  ],
+  "defaultHotkeys": [
+    {
+      "key": "CTRL+ALT+F7",
+      "description": "Menu",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyMenu",
+      "keyName": "key",
+      "originalValue": "ctrl alt no_shift VK_F7"
+    },
+    {
+      "key": "CTRL+ALT+F8",
+      "description": "Face",
+      "iniFile": "GlossifyBase.ini",
+      "section": "KeyFace",
+      "keyName": "key",
+      "originalValue": "ctrl alt no_shift VK_F8"
+    },
+    {
+      "key": "CTRL+ALT+F9",
+      "description": "Body",
+      "iniFile": "GlossifyBase.ini",
+      "section": "KeyBody",
+      "keyName": "key",
+      "originalValue": "ctrl alt no_shift VK_F9"
+    },
+    {
+      "key": "MULTIPLY",
+      "description": "Style",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyStyle",
+      "keyName": "key",
+      "originalValue": "MULTIPLY"
+    },
+    {
+      "key": "NUM +",
+      "description": "Stronger",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyStronger",
+      "keyName": "key",
+      "originalValue": "ADD"
+    },
+    {
+      "key": "NUM -",
+      "description": "Weaker",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyWeaker",
+      "keyName": "key",
+      "originalValue": "SUBTRACT"
+    },
+    {
+      "key": "LMB",
+      "description": "Click",
+      "iniFile": "GlossifyToggles.ini",
+      "section": "KeyClick",
+      "keyName": "key",
+      "originalValue": "VK_LBUTTON"
+    }
+  ]
+}

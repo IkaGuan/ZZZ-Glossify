@@ -1,23 +1,28 @@
 ---
-description: ZZZ mod architecture. Read before any Zenless Zone Zero mod, ZZMI, or Glossify question.
+description: ZZZ mod architecture. Read before any Zenless Zone Zero mod, ZZMI, OilSkinBoo, or Glossify question.
 alwaysApply: true
 ---
 
 # ZZZ mods
 
-Before you answer or edit anything about a Zenless Zone Zero mod, ZZMI, a character skin, oil, or Glossify, read `docs/zzz-mod-architecture.md` and follow it.
+Before you answer or edit anything about a Zenless Zone Zero mod, ZZMI, a character skin, oil, or OilSkinBoo, read `docs/zzz-mod-architecture.md` and follow it.
 
 Live mods: `C:\Users\Ika\Desktop\zzz\FlairX Mod Manager\app\XXMI\ZZMI\Mods`
 
-Phoenix Reffaella is the working character-mod shape. This repo is Glossify. Glossify does not replace meshes.
+Game: `C:\Program Files\HoYoPlay\games\ZenlessZoneZero Game`
+
+There is no `Glossify\` folder. The product is OilSkinBoo. Namespaces stay `Glossify*`. The packs share those namespaces, so enable one of `OilSkinBoo`, `油光布`, `OilSkinBoo-Glossify`, `油光布-全油化版`, or `OilSkinBoo-Skin`. Check which live folder is not `DISABLED_` before editing. A disabled copy is often stale. OilSkin 2 stays on beside that one pack. Do not edit `Matcap_ZZZ.ini`.
+
+Phoenix Reffaella is the working character-mod shape. OilSkinBoo does not replace meshes.
 
 - Put character maps in `Resource\ZZMI\...` and call `CommandList\ZZMI\SetTextures`. Do not assign `ps-t` for those maps. `ps-t0` is the shadow map.
 - On a raw hash, one TextureOverride wins. `checktextureoverride` runs every match. A section that sets `match_priority` runs before one that leaves it unset, so Glossify `-1` runs before a mod at the default.
 - Do not store a hash in a `persist` variable.
-- Do not edit `Matcap_ZZZ.ini`. Keep one `namespace = KatFXMatcap`. OilSkin 2 is the loaded engine. Style is Numpad *, 0 through 7. 0 is off. Rebinds are the Glossify `[Key]` sections. Players change them in FlairX by pressing a key. The panel reads that line. `$oilKeysEnabled` stays 0 so the oil numpad keys do not stack.
+- Style is Numpad *, 0 through 7. 0 is off. Rebinds are the `[Key]` sections. Players change them in FlairX by pressing a key. `hotkeys.json` descriptions stay Menu, Face, Body, Style, Stronger, Weaker, Click. `$oilKeysEnabled` stays 0.
 - Restore `$oilSkin` and `$oilStrength` before the next mesh calls OilSkin. Present already clears t124–t127.
-- Do not draw a stock index list into a mod vertex buffer. Do not replace the face sheen with a body oil pass.
-- `DISABLED_` is off. F10 reloads. Ctrl+Alt+F10 wipes persisted values.
+- Do not draw a stock index list into a mod vertex buffer. Do not replace the face sheen with a body oil pass. Do not add a ShaderRegex that has no pattern.
+- A black screen on this PC is commit exhaustion: 16 GB RAM, pagefile locked at 14 GB, `dwm.exe` `0xc00001ad`. Read System event 2004 before blaming an ini. Leave `.bin` caches. F10 cannot revive a closed game.
+- `DISABLED_` is off. F10 reloads ini text. Ctrl+Alt+F10 wipes persisted values.
 
 ```
 hash = 9040e2c4
